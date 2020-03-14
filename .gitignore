@@ -1,0 +1,15 @@
+# Ignore pycache
+__pycache__/
+#Ignore .DS_Store
+.DS_Store
+# Ignore ipynb checkpoints
+.ipynb_checkpoints/
+
+# Ignore data folder
+/data
+# Ignore pubmed_parser
+/pubmed_parser
+# Ignore sent2vec folder
+/sent2vec
+#Ignore test.py script
+test.py

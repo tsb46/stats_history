@@ -5,6 +5,7 @@ import re
 import spacy
 
 from numpy import random
+from spacy.util import minibatch, compounding
 
 
 def detect_ent_overlap(ent):
@@ -13,7 +14,7 @@ def detect_ent_overlap(ent):
         return ent
     else:
         overlapping = [[x, y] for x in entity_spans for y in entity_spans
-                       if x is not y and x[1] > y[0] and x[0] < y[0]]
+                       if x is not y and x[1] >= y[0] and x[0] <= y[0]]
         if len(overlapping) > 0:
             return None
         else:
@@ -49,27 +50,30 @@ def trim_entity_spans(data):
 
     return cleaned_data
 
+
 def run_main(input_pickle, output_dir):
     training_dict = pickle.load(open(input_pickle, 'rb'))
-    training_data = training_dict['training_samples']
+    training_data = training_dict
     training_data_no_overlap = [sample for sample in
                                 list(map(detect_ent_overlap, training_data))
                                 if sample is not None]
     training_data_final = trim_entity_spans(training_data_no_overlap)
 
-    ner_spacy_model = train_spacy(training_data_final, 50)
+    ner_spacy_model = train_spacy(training_data_final, 100)
     pickle.dump(ner_spacy_model,
                 open('{}/ner_spacy_model.pickle'.format(output_dir), 'wb'))
 
 
 def train_spacy(data, iterations):
     TRAIN_DATA = data
-    nlp = spacy.blank('en')  # create blank Language class
+    nlp = spacy.blank('en')  # Load in pretrained spacy model
     # create the built-in pipeline components and add them to the pipeline
     # nlp.create_pipe works for built-ins that are registered with spaCy
     if 'ner' not in nlp.pipe_names:
         ner = nlp.create_pipe('ner')
         nlp.add_pipe(ner, last=True)
+    else:
+        ner = nlp.get_pipe("ner")
 
     # add labels
     for _, annotations in TRAIN_DATA:
@@ -77,21 +81,25 @@ def train_spacy(data, iterations):
             ner.add_label(ent[2])
 
     # get names of other pipes to disable them during training
-    other_pipes = [pipe for pipe in nlp.pipe_names if pipe != 'ner']
+    pipe_exceptions = ["ner", "trf_wordpiecer", "trf_tok2vec"]
+    other_pipes = [pipe for pipe in nlp.pipe_names if pipe not in pipe_exceptions]
     with nlp.disable_pipes(*other_pipes):  # only train NER
-        optimizer = nlp.begin_training()
+        # reset and initialize the weights randomly
+        nlp.begin_training()
         for itn in range(iterations):
-            print("Starting iteration " + str(itn))
             random.shuffle(TRAIN_DATA)
             losses = {}
-            for text, annotations in TRAIN_DATA:
+            # batch up the examples using spaCy's minibatch
+            batches = minibatch(TRAIN_DATA, size=compounding(4.0, 32.0, 1.001))
+            for batch in batches:
+                texts, annotations = zip(*batch)
                 nlp.update(
-                    [text],  # batch of texts
-                    [annotations],  # batch of annotations
-                    drop=0.1,  # dropout - make it harder to memorise data
-                    sgd=optimizer,  # callable to update weights
-                    losses=losses)
-            print(losses)
+                    texts,  # batch of texts
+                    annotations,  # batch of annotations
+                    drop=0.2,  # dropout - make it harder to memorise data
+                    losses=losses,
+                )
+            print("Losses", losses)
     return nlp
 
 

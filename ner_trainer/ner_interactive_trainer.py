@@ -1,73 +1,51 @@
-from PyInquirer import prompt
-import pandas as pd
 import json
 import argparse
-import re
 import os
 import pickle
 import numpy as np
-import nltk
+import spacy
 
-entity_question = [
-    {
-        'type': 'input',
-        'name': 'entity_check',
-        'message': 'Is there an entity in this sentence? Enter "y" for yes,'
-        '"n" for no. Enter "p" if you would like a report of your progress'
-    }
-]
+from PyInquirer import prompt
+from spacy.matcher import PhraseMatcher
 
-entity_user_response = [
-    {
-        'type': 'input',
-        'name': 'entity_user_response',
-        'message': 'Type entity string (must be exact). '
-                   'If multiple, separate by "," (no spaces). '
-                   'If there is there is no entity, type "n". '
-    }
-]
-
-overwrite_pickle = [
-    {
-        'type': 'confirm',
-        'name': 'overwrite_pickle',
-        'message': 'there is an existing "training" pickle '
-                   'file in your output. Would you like to continue '
-                   'appending to that?'
-    }
-]
+from ner_trainer.user_prompts import entity_question, overwrite_pickle
+from ner_trainer.trainer_utils import clean_out_html_tags, \
+    replace_unwanted_characters, filter_matches
 
 
-def analyze_chosen_sample(sent, label, progress_report):
+def analyze_chosen_sample(doc, matches, input_dict):
     progress = 1
     while progress == 1:
-        print('{}\n'.format(sent))
+        print('{}\n'.format(doc))
+        for match_id, start, end in matches:
+            span = doc[start:end]
+            print('Start:End {}:{}  Text: {}'.format(start, end, span.text))
         answer_1 = prompt(entity_question)
         if answer_1['entity_check'].lower() == 'y':
-            print('{}\n'.format(sent))
-            answer_2 = prompt(entity_user_response)
-            # If the response was an entry string
-            if answer_2['entity_user_response'] != 'n':
-                entity_strings = answer_2['entity_user_response'].split(',')
-                match_indices = match_user_response(sent, entity_strings)
-                training_output = format_output_spacy(sent, match_indices, label)
-                return training_output
-            # if response was 'n' for a no
-            else:
-                return
+            training_output = format_output_spacy(doc, matches,
+                                                  input_dict['ent_types'])
+            return training_output
         # If the response was for a progress report
         elif answer_1['entity_check'].lower() == 'p':
-            generate_progress_report(progress_report)
+            generate_progress_report(input_dict['progress_report'])
             progress = 1
-        # if response was 'n' for a no
+        elif answer_1['entity_check'].lower() == 's':
+            write_output(input_dict['training_samples'], input_dict['output_dir'],
+                         input_dict['progress_report'])
+            progress = 1
         else:
             return
 
 
-def format_output_spacy(sent, match_indices, label):
-    output = (sent,
-              {'entities': [(match[0], match[1], label)
-                            for match in match_indices]})
+def format_output_spacy(doc, match_indices, entity_label):
+    output = (doc,
+              {
+                  'entities': [
+                      (start, end, entity_label)
+                      for _, start, end in match_indices
+                  ]
+              }
+              )
     return output
 
 
@@ -82,18 +60,6 @@ def generate_progress_report(progress_report):
         print('Number of sentences viewed: {} \n'.format(
             progress_report['n_tries']
         ))
-
-
-def incorrect_response_func(string):
-    incorrect_response = [
-        {
-            'type': 'input',
-            'name': 'incorrect_user_response',
-            'message': 'The input string {} cannot be found. Type again,'
-                       'or type "n" for no entity'.format(string)
-        }
-    ]
-    return incorrect_response
 
 
 def load_pickle_data(pickle_flag, output_dir):
@@ -121,115 +87,104 @@ def load_pickle_data(pickle_flag, output_dir):
     return progress_report, training_samples
 
 
-def match_user_response(sent, response):
-    match_indices = []
-    for string in response:
-        matches = list(re.finditer(re.escape(string), sent))
-        while len(matches) == 0:
-            incorrect_response = incorrect_response_func(string)
-            answer = prompt(incorrect_response)
-            retry = answer['incorrect_user_response']
-            if retry == 'n':
-                break
-            else:
-                matches = list(re.finditer(re.escape(retry), sent))
-        for match in matches:
-            match_indices.append([match.start(), match.end()])
-
-    return match_indices
-
-
-def run_main(input, output_dir, text_label,
-             n_samples, label, seed_file='none',
-             pickle_file='false'):
+def run_main(input, output_dir,
+             n_samples, type_labels,
+             phrase_file, pickle_file='false'):
     # Set up inputs necessary to run main function
-    text_list, training_samples, sampling_index, \
-    search_seeds, progress_report = set_up_inputs(input, output_dir,
-                                                  text_label, seed_file,
-                                                  pickle_file)
-
+    input_dict = set_up_inputs(input, output_dir, type_labels,
+                               phrase_file, pickle_file)
     # Start the training loop with a while loop that continues
     # until the number of specified training samples.
-    if 'n_tries' in progress_report.keys():
-        loop_count = progress_report['n_tries']
+    if 'n_tries' in input_dict['progress_report'].keys():
+        loop_count = input_dict['progress_report']['n_tries']
     else:
         loop_count = 0  # Initialize loop counter
     # Start sampling at top level of hierarchy, if any
-    while len(training_samples) < n_samples:
+    while len(input_dict['training_samples']) < n_samples:
         # Run a training instance - i.e. get a single training sample
-        training_sample = run_training_instance(text_list,
-                                                sampling_index,
-                                                loop_count, search_seeds,
-                                                label, progress_report)
+        training_sample = run_training_instance(input_dict, loop_count)
         if training_sample is not None:
-            training_samples.append(training_sample)
-            write_output(training_samples, output_dir, progress_report)
+            input_dict['training_samples'].append(training_sample)
+            input_dict['progress_report'] = update_progress_report(
+                input_dict['progress_report'],
+                loop_count,
+                input_dict['training_samples'],
+                input_dict['sampling_index']
+            )
         loop_count += 1
-        progress_report = update_progress_report(progress_report,
-                                                 loop_count,
-                                                 training_samples,
-                                                 sampling_index)
+    write_output(input_dict['training_samples'], input, output_dir,
+                 input_dict['progress_report'])
 
 
-def run_training_instance(txt_list, sampler, loop_count,
-                          search_seeds, label, progress_report):
-    # grab first column - first column should be text, not
-    # hierarchical level info - and select random sentence
-    rand_sent = select_sentence_sample(
-        txt_list[sampler[loop_count]], search_seeds)
-    if rand_sent is None:
-        return
-    # analyze the chosen sample for any entities
-    training_sample = analyze_chosen_sample(rand_sent, label, progress_report)
-
-    return training_sample
-
-
-def select_sentence_sample(text, search_seeds):
-    # parse text into sentences with nltk
-    text_sents = nltk.sent_tokenize(text)
-    # identify sentences containing search seeds, or pull all
-    if search_seeds is not None:
-        positive_sents = [sent for sent in text_sents
-                          if any([seed in sent for seed in search_seeds])]
-    else:
-        positive_sents = text_sents
-    if len(positive_sents) == 0:
-        return
-    # select random sentence from selected sentences
-    rand_select = np.random.choice(len(positive_sents))
-    return positive_sents[rand_select]
+def run_training_instance(input_dict, loop_count):
+    # Standardize text
+    text = standardize_text(input_dict['text'][input_dict['sampling_index'][loop_count]])
+    # Run spacy model on doc
+    spacy_model = input_dict['spacy_model']
+    phrase_matcher = input_dict['phrase_matcher']
+    text_spacy = spacy_model(text)
+    matches = phrase_matcher(text_spacy)
+    if len(matches) > 0:
+        # Filter out overlapping spans (take the longest one)
+        matches_filtered = filter_matches(text_spacy, matches)
+        # analyze the chosen sample for any entities
+        training_sample = analyze_chosen_sample(text_spacy, matches_filtered,
+                                                input_dict)
+        return training_sample
 
 
-def set_up_inputs(input, output_dir, text_label,
-                  seed_file='none',
-                  pickle_file='false'):
+def set_up_inputs(input, output_dir, type_labels,
+                  phrase_file, pickle_file='false'):
     # Ensure the user supplies a json file as input
     _, ext = os.path.splitext(input)
     if ext == '.json':
         text_json = json.load(open(input, 'r'))
     else:
-        raise Exception('.csv must be supplied as input')
+        raise Exception('.json must be supplied as input')
 
     # Pull text from json into one list
-    text_list = [dict_out[text_label] for dict_out in text_json]
+    text_list = [text['methods'] for text in text_json]
     # If flagged, or already exists, get previous runs from pickle file
     progress_report, training_samples = load_pickle_data(pickle_file, output_dir)
+    # Get entity type labels from delimited string input
+    ent_types = [ent_type for ent_type in type_labels.split(',')]
     # simply take a permutation of all rows to randomly sample
     # create sampling index, if no previous run was loaded
     if 'sampling_index' not in progress_report.keys():
-        sampling_index = np.random.permutation(len(text_json) - 1)
+        sampling_index = np.random.permutation(len(text_list) - 1)
     else:
         sampling_index = progress_report['sampling_index']
+    # Load 'en_core_web_md' spacy model
+    spacy_model = spacy.load('en_core_web_sm')
+    spacy_model.tokenizer.token_match = None
+    # Set phrase seeds to guide selection of sentences
+    with open(phrase_file) as f:
+        search_phrases = f.read().splitlines()
+    # Remove potential empty lines
+    search_phrases = [seed for seed in search_phrases if seed != '']
+    # Initialize PhraseMatcher obj
+    matcher = PhraseMatcher(spacy_model.vocab, attr='LOWER')
+    # Create phrase dictionary and add to matcher
+    patterns = [spacy_model.make_doc(text) for text in search_phrases]
+    matcher.add(ent_types[0], None, *patterns)
+    input_dict = {
+        'text': text_list,
+        'training_samples': training_samples,
+        'sampling_index': sampling_index,
+        'ent_types': ent_types,
+        'phrase_matcher': matcher,
+        'progress_report': progress_report,
+        'spacy_model': spacy_model,
+        'output_dir': output_dir
+    }
+    return input_dict
 
-    # Set search seeds to guide selection of sentences
-    if seed_file == 'none':
-        search_seeds = None
-    else:
-        with open(seed_file) as f:
-            search_seeds = f.read().splitlines()
 
-    return text_list, training_samples, sampling_index, search_seeds, progress_report
+def standardize_text(doc):
+    # Standardize text
+    doc = clean_out_html_tags(doc)
+    doc = replace_unwanted_characters(doc)
+    return doc
 
 
 def update_progress_report(progress_report, loop_count, training_samples,
@@ -244,12 +199,14 @@ def update_progress_report(progress_report, loop_count, training_samples,
     return progress_report
 
 
-def write_output(training_samples, output_dir, progress_report):
+def write_output(training_samples, input, output_dir, progress_report):
     output_dict = {'metadata': progress_report,
                    'training_samples': training_samples}
+    input_base = os.path.basename(input)
+    input_name = os.path.splitext(input_base)[0]
     pickle.dump(output_dict,
-                open('{}/training_samples.pickle'.format(output_dir), "wb"))
-
+                open('{}/training_samples_{}.pickle'.format(output_dir,
+                                                            input_name), "wb"))
 
 if __name__ == '__main__':
     """Retrieve list of text data and start CL interface to create 
@@ -262,28 +219,19 @@ if __name__ == '__main__':
                              'existing training model file',
                         required=True,
                         type=str)
-    parser.add_argument('-o', '--output_dir',
-                        help='<Required> Path to directory '
-                             'to write output pickle file to',
-                        required=True,
-                        type=str)
-    parser.add_argument('-t', '--text_label',
-                        help='<Required> Label in json that corresponds'
-                             ' to text field',
-                        required=True,
-                        type=str)
     parser.add_argument('-n', '--n_samples',
                         help='<Required> num of training samples to'
                              'pull from text',
                         required=True,
                         type=int)
     parser.add_argument('-e', '--entity_label',
-                        help='<Required> name of the entity type you are '
+                        help='<Required> delimited list string of the '
+                             'names of the entity types you are '
                                'training the NER model for',
                         required=True,
                         type=str)
-    parser.add_argument('-s', '--search_seeds',
-                        help='Path to .txt file providing a set of seed strings'
+    parser.add_argument('-s', '--search_phrases',
+                        help='Path to .txt file providing a set of phrase strings'
                                'to guide selection of training samples. The .txt'
                                'file should have each string on a separate line',
                         required=False,
@@ -296,10 +244,16 @@ if __name__ == '__main__':
                         default='false',
                         choices=['true', 'false'],
                         type=str)
+    parser.add_argument('-o', '--output_dir',
+                        help='Path to directory '
+                             'to write output pickle file to',
+                        required=False,
+                        default='data/training_samples',
+                        type=str)
 
     args_dict = vars(parser.parse_args())
     run_main(args_dict['input'], args_dict['output_dir'],
-             args_dict['text_label'], args_dict['n_samples'],
+             args_dict['n_samples'],
              args_dict['entity_label'],
-             args_dict['search_seeds'],
+             args_dict['search_phrases'],
              args_dict['pickle_file'])

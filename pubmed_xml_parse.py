@@ -3,7 +3,6 @@ import tqdm
 
 from multiprocessing import Pool
 
-
 class PubmedParser:
     # Define class attribute - 'method_sec_markers'
     method_sec_markers = ['method', 'material', 'measure', 'analysis', 'statistical']
