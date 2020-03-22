@@ -1,10 +1,12 @@
 import pickle
 import pandas as pd
+import numpy as np
 
 from analysis_main.preprocessing import EntityPreprocessing
 from glob import glob
 from collections import Counter
 from sklearn.decomposition import NMF, SparsePCA, DictionaryLearning
+from sklearn.preprocessing import normalize 
 
 
 class EntityBase:
@@ -44,22 +46,36 @@ class EntityBase:
                                               self.ignore_article_counts)
         self.ents = ents_preprocess.preprocess(article_dicts)
 
-    def entity_decomposition(self, alg='nmf', n_comp=200, sparsity=0):
+    def entity_decomposition(self, alg='nmf', n_comp=200, sparsity=0, normalize_feat=False):
         if alg == 'nmf':
-            decomp = NMF(n_components=n_comp, init='nndsvd', alpha=sparsity)
+            decomp = NMF(n_components=n_comp, init='random', alpha=sparsity)
         elif alg == 'sparsepca':
             decomp = SparsePCA(n_components=n_comp, alpha=sparsity)
         elif alg == 'dictlearn':
             decomp = DictionaryLearning(n_components=n_comp, alpha=sparsity,
                                         positive_code=True, positive_dict=True)
-        decomp.fit(self.ents['word_count_matrix']['matrix'])
+        word_count_matrix = self.ents['word_count_matrix']['matrix']
+        if normalize_feat:
+            word_count_matrix = normalize(word_count_matrix, norm='l1', axis=0)
+        decomp.fit(word_count_matrix)
         component_weights = decomp.components_
-        component_scores = decomp.transform(self.ents['word_count_matrix']['matrix'])
+        component_scores = decomp.transform(word_count_matrix)
         return {
             'weights': component_weights,
             'scores': component_scores
         }
-
+    
+    def entity_decomp_query(self, decomp, comp, top_n=10, normalized=True):
+        vocab = list(self.ents['word_count_matrix']['voc2id'].keys())
+        weights_matrix=decomp['weights']
+        if normalized:
+            weights_matrix = normalize(weights_matrix, norm='l1', axis=0)
+        weight_vec = weights_matrix[comp, :]
+        sort_indices = np.flip(weight_vec.argsort())
+        for i in range(top_n):
+            print('{} : {} \n'.format(vocab[sort_indices[i]],
+                                      weight_vec[sort_indices[i]]))
+            
     def convert_to_dataframe(self, additional_cols=None):
         """
         Convert word count matrix to dataframe for further processing, index is set as pmid
