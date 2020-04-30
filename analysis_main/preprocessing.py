@@ -19,7 +19,8 @@ lemmatizer = WordNetLemmatizer()
 
 class EntityPreprocessing:
     def __init__(self, domain_classifier, classifier_type, n_thres=5,
-                 ignore_article_counts=True, n_spell_check_thres=5):
+                 ignore_article_counts=True, precomp_ent_groups=None,
+                 n_spell_check_thres=5):
         if classifier_type == 'alg':
             self.domain_classifier = pickle.load(open(domain_classifier, 'rb'))
             self.classifier_type = 'alg'
@@ -28,6 +29,7 @@ class EntityPreprocessing:
             self.classifier_type = 'precomputed'
         self.n_thres = n_thres
         self.ignore_article_counts = ignore_article_counts
+        self.precomp_ent_groups = precomp_ent_groups
         self.n_spell_check_thres = n_spell_check_thres
 
     def preprocess(self, articles_dict):
@@ -54,6 +56,11 @@ class EntityPreprocessing:
         ents_list_proc = self._replace_ents_w_corrected(
             ents_list, ents_processing_history
         )
+        # If precomputed groupings of entities are supplied (as a dict) then replace
+        # entity labels with grouping labels
+        if self.precomp_ent_groups is not None:
+            ents_list_proc = self._group_ents(ents_list_proc, 
+                                              self.precomp_ent_groups)
         # Count up entity occurrences
         if self.ignore_article_counts:
             ents_counter = Counter([ent.lower() for article in ents_list_proc
@@ -116,7 +123,6 @@ class EntityPreprocessing:
 
         return ents_final
 
-
     @staticmethod
     def _create_spell_checker_dict(ents, thres):
         sym_spell = SymSpell(max_dictionary_edit_distance=2, prefix_length=7)
@@ -143,7 +149,20 @@ class EntityPreprocessing:
             word_count_mat[word_count_mat > 0] = 1
         article_counts = word_count_mat.sum(axis=1)
         return word_count_mat, voc2id, pmid_list, article_counts
-
+    
+    @staticmethod
+    def _group_ents(ent_list, ent_groups):
+        replaced_ent_list = []
+        for article_ents in ent_list:
+            if article_ents is not None:
+                new_article_ents = [ent_groups[ent]
+                                    for ent in article_ents 
+                                    if ent in ent_groups]
+            else:
+                new_article_ents = []
+            replaced_ent_list.append(new_article_ents)
+        return replaced_ent_list
+    
     @staticmethod
     def _preprocess_string(string_x):
         # replace '-' with white space

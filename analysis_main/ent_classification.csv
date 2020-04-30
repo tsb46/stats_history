@@ -1,4 +1,4 @@
-col,ent,classification
+id,ent,classification
 0,median,summary statistic
 1,confidence interval,confidence interval
 2,statistically significant,null hypothesis testing
@@ -22,12 +22,12 @@ col,ent,classification
 20,multivariate logistic regression,logistic regression
 21,euclidean distance,distance metric
 22,null hypothesis,null hypothesis testing
-23,binomial test,binomial text
+23,binomial test,binomial test
 24,variance,summary statistic
 25,mutual information,information theory
 26,mann whitney u,nonparametric test
 27,analysis of variance,anova
-28,standard deviation,spread statistic
+28,standard deviation,summary statistic
 29,odds ratio,logistic regression
 30,logistic regression,logistic regression
 31,mode,summary statistic
@@ -99,7 +99,7 @@ col,ent,classification
 97,mixed effect model,mixed effect model/multilevel model
 98,multiple imputation,missing value method
 99,wald test,model performance
-100,micropropagation,NA
+100,micropropagation,N/A
 101,ordinal logistic regression,logistic regression
 102,principal component analysis,pca/factor analysis
 103,k nearest neighbor,knn
@@ -247,7 +247,7 @@ col,ent,classification
 245,simulated annealing,optimization
 246,random intercept model,mixed effect model/multilevel model
 247,bonferroni procedure,multiple comparison correction
-248,bland altman analysis,visualization
+248,bland altman analysis,reliability measure
 249,kruskal wallis analysis of variance,nonparametric test
 250,pearson chi square,chi square test
 251,principal factor analysis,pca/factor analysis
@@ -268,16 +268,16 @@ col,ent,classification
 266,holm bonferroni method,multiple comparison correction
 267,statistical distribution,statistical distribution
 268,null distribution,null hypothesis testing
-269,funnel plot,visualization
+269,funnel plot,meta analysis
 270,growth curve model,structural equation modeling
-271,bland altman plot,visualization
+271,bland altman plot,reliability measure
 272,complete linkage,cluster analysis
 273,regression imputation,missing value method
 274,spearmans rank correlation,rank correlation
 275,z,z test
 276,spearman rank correlation,rank correlation
 277,regression test,linear regression
-278,bland altman test,visualization
+278,bland altman test,reliability measure
 279,logit function,logistic regression
 280,hierarchical logistic regression,logistic regression
 281,density estimation,gaussian mixture model
@@ -376,7 +376,7 @@ col,ent,classification
 374,clique,graph theory
 375,phi coefficient,correlation
 376,p ranging,N/A
-377,regression plot,visualization
+377,regression plot,linear regression
 378,mean interval,N/A
 379,decision tree,decision tree
 380,sandwich estimation,statistical estimation
@@ -428,7 +428,7 @@ col,ent,classification
 426,distance transform,N/A
 427,variance estimation,statistical estimation
 428,hospital clustering,N/A
-429,survival plot,visualization
+429,survival plot,survival model
 430,repeated measure multivariate analysis of variance,cca/manova
 431,forward motion,N/A
 432,linear growth model,structural equation modeling
@@ -571,7 +571,7 @@ col,ent,classification
 569,posterior interval,confidence interval
 570,framework analysis,thematic analysis
 571,elastic net regularization,regularized regression
-572,kaplan meier plot,visualization
+572,kaplan meier plot,survival model
 573,minimal interval,N/A
 574,mutant analysis,N/A
 575,standard clustering,cluster analysis
@@ -597,7 +597,7 @@ col,ent,classification
 595,standard index,N/A
 596,mann witney u,nonparametric test
 597,conditional estimation,N/A
-598,hazard characterization,
+598,hazard characterization,N/A
 599,wilcoxon mann whitney rank sum test,nonparametric test
 600,nearest neighbor algorithm,knn
 601,statistical clustering,cluster analysis
@@ -660,7 +660,7 @@ col,ent,classification
 658,fisher lsd test,anova
 659,benjamini correction,multiple comparison correction
 660,least square difference,statistical estimation
-661,beta regression,beta regression
+661,beta regression,generalized linear model
 662,canonical score,cca/manova
 663,merging algorithm,N/A
 664,shape distribution,statistical distribution
@@ -778,7 +778,7 @@ col,ent,classification
 776,forward calculation,N/A
 777,absorption test,N/A
 778,cell analysis,N/A
-779,lawrence classification,
+779,lawrence classification,N/A
 780,canonical monte carlo,optimization
 781,linear effect model,N/A
 782,hierarchical mixture model,gaussian mixture model
@@ -816,7 +816,7 @@ col,ent,classification
 814,forward information,N/A
 815,cox regression analysis,survival model
 816,log rank analysis,survival model
-817,bland altman procedure,visualization
+817,bland altman procedure,reliability measure
 818,linear coupling,N/A
 819,exponential power,N/A
 820,intracranial bleeding,N/A
@@ -840,7 +840,7 @@ col,ent,classification
 838,exploratory cluster analysis,cluster analysis
 839,multiple tree,N/A
 840,gibbs distribution,bayesian estimation
-841,linear plot,visualization
+841,linear plot,N/A
 842,independent sample mann whitney u,nonparametric test
 843,hoc regression,N/A
 844,weighted least square fit,statistical estimation
@@ -872,8 +872,8 @@ col,ent,classification
 870,eigenvector decomposition,pca/factor analysis
 871,grit size,N/A
 872,likelihood,statistical estimation
-873,bland altman statistic,visualization
-874,cronbachs alpha,reliability
+873,bland altman statistic,reliability measure
+874,cronbachs alpha,reliability measure
 875,chi square χ,chi square test
 876,prior power,N/A
 877,phi correlation,correlation
@@ -889,7 +889,7 @@ col,ent,classification
 887,intra class correlation,mixed effect model/multilevel model
 888,alternative clustering,N/A
 889,regularized least square,regularized regression
-890,principal component plot,visualization
+890,principal component plot,pca/factor analysis
 891,louvain algorithm,graph theory
 892,one class analysis,N/A
 893,alternative distribution,N/A
@@ -1034,7 +1034,7 @@ col,ent,classification
 1032,groc,N/A
 1033,external power,N/A
 1034,knn classification,knn
-1035,standard sieve,N?A
+1035,standard sieve,N/A
 1036,clearance value,N/A
 1037,shapiro francia test,normality test
 1038,natural forest,N/A
@@ -1144,7 +1144,7 @@ col,ent,classification
 1142,factor network,N/A
 1143,funnel test,N/A
 1144,population growth model,N/A
-1145,bland and altman analysis,visualization
+1145,bland and altman analysis,reliability measure
 1146,cross wavelet analysis,signal processing
 1147,grayscale distribution,N/A
 1148,mutual defection,N/A

@@ -13,3 +13,4 @@ def remove_non_alphanumeric(string_input):
     return ''.join(c for c in string_input if c.isalnum())
 
 
+

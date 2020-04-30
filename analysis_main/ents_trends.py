@@ -6,62 +6,59 @@ from datetime import datetime
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LinearRegression
 from sklearn.decomposition import PCA
-from tslearn.clustering import KShape
-from tslearn.clustering import TimeSeriesKMeans
-from tslearn.clustering import silhouette_score
 
 
 class EntityTrends(EntityBase):
     def __init__(self, ents_dir, journal_classifier, ent_count_thres,
-                 ignore_article_counts=True):
+                 ignore_article_counts=True, precomp_ent_group=None):
         super().__init__(ents_dir, journal_classifier, ent_count_thres,
-                         ignore_article_counts)
+                         ignore_article_counts, precomp_ent_group)
         # Hard-coded metadata columns in the word count dataframe - intentionally 
         # dropped in some analyses
         self.metadata_cols = ['citations', 'journal', 
                               'title', 'abstract', 'domain']
     
-    def cluster_time_series(self, word_count_df, cluster_n, start_year=2009, 
-                            time_res='biannual', remove_most_recent=True,
-                            norm='avg', win_sz=4):
-        processed_df = self._preprocess_all_ts(word_count_df, norm, time_res, 
-                                               start_year, remove_most_recent)
-        processed_df = processed_df.rolling(win_sz, min_periods=1).mean()
-        time_series_norm = StandardScaler().fit_transform(processed_df.values)
-        if isinstance(cluster_n, tuple):
-            clusterings = []
-            for n in range(cluster_n[0], cluster_n[1]+1):
-                clusterings.append(KShape(n_clusters=n).fit(time_series_norm.T))
-            return clusterings
-                
-        else:
-            clustering = KShape(n_clusters=cluster_n)
-            clustering.fit(time_series_norm.T)
-            return clustering
-        
-    def count_by_time(self, word_count_df, start_year=2009, time_res='biannual'):
-        word_count_df['date'] = pd.to_datetime(word_count_df['date'], 
-                                                   format='%d-%m-%Y',
-                                                   errors='coerce')
+    def count_by_domain_time(self, word_count_df, time_series, domains, 
+                             start_year=2009, time_res='biannual', 
+                             remove_most_recent=True):
+        all_domains = []
+        for domain in domains.unique():
+            domain_mask = domains == domain
+            domain_by_time = self.count_by_time(word_count_df.loc[domain_mask, :].copy(), 
+                                                time_series, start_year, 
+                                                time_res, remove_most_recent)
+            domain_by_time['domain_tag'] = domain
+            all_domains.append(domain_by_time.reset_index())
+        return pd.concat(all_domains)
+            
+            
+    def count_by_time(self, word_count_df, time_series, start_year=2009, 
+                      time_res='biannual', remove_most_recent=True):
+        word_count_df['date'] = pd.to_datetime(time_series, 
+                                               format='%d-%m-%Y',
+                                               errors='coerce')
         if time_res == 'quarterly':
-            resampled_df = word_count_df.resample('Q', on='date').size()
+            resampled_df = word_count_df.resample('Q', on='date').sum()
         elif time_res == 'biannual':
-            resampled_df = word_count_df.resample('6M', on='date').size()
+            resampled_df = word_count_df.resample('6M', on='date').sum()
         elif time_res == 'annual':
-            resampled_df = word_count_df.resample('A', on='date').size()
+            resampled_df = word_count_df.resample('A', on='date').sum()
         else:
             raise Exception('Provided time resolution not available')
-        resampled_df = self._threshold_dates(resampled_df, start_year)
+        resampled_df = self._threshold_dates(resampled_df, start_year, 
+                                             remove_most_recent)
+        # Drop 'article_counts' columns
+        resampled_df = resampled_df.drop(columns='article_counts', errors='ignore')
 
         return resampled_df
     
-    def decompose_time_series(self, word_count_df, n_comps, start_year=2009, 
-                            time_res='biannual', remove_most_recent=True,
-                           norm='avg', win_sz=4):
-        processed_df = self._preprocess_all_ts(word_count_df, norm, time_res, 
-                                               start_year, remove_most_recent)
+    def decompose_time_series(self, word_count_df, time_series, 
+                              n_comps, start_year=2009, time_res='biannual', 
+                              remove_most_recent=True, norm='avg', win_sz=4):
+        processed_df = self._preprocess_all_ts(word_count_df, time_series, 
+                                               norm, time_res, start_year, 
+                                               remove_most_recent)
         processed_df = processed_df.rolling(win_sz, min_periods=1).mean()
-#         time_series_norm = StandardScaler().fit_transform(processed_df.values)
         pca = PCA(n_components=n_comps)
         pca.fit(processed_df.values)
         pca.scores = pca.transform(processed_df.values)
@@ -150,13 +147,13 @@ class EntityTrends(EntityBase):
             thres_df = thres_df.iloc[:-1].copy()
         return thres_df
     
-    def _preprocess_all_ts(self, word_count_df, norm, 
+    def _preprocess_all_ts(self, word_count_df, time_series,
+                           norm, 
                            time_res, start_year,
                           remove_most_recent):
-        word_count_df['date'] = pd.to_datetime(word_count_df['date'], 
+        word_count_df['date'] = pd.to_datetime(time_series, 
                                                format='%d-%m-%Y',
                                                errors='coerce')
-        word_counts = word_count_df.drop(columns=self.metadata_cols, errors='ignore')
         resampled_df = self._resample_dates(word_counts, time_res)
         resampled_df = self._threshold_dates(resampled_df, start_year, remove_most_recent)
         if norm == 'perc':
