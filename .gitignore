@@ -13,4 +13,3 @@ __pycache__/
 /sent2vec
 #Ignore test.py script
 test.py
-test.ipynb
