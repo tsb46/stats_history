@@ -18,7 +18,7 @@ class EntityCompare(EntityBase):
         super().__init__(ents_dir, journal_classifier, ent_count_thres,
                          ignore_article_counts, precomp_ent_group)
 
-    def compute_entity_vectors(self, word_count_mat, n_dim=300): 
+    def compute_entity_vectors(self, word_count_mat, n_dim=100): 
         sim_mat = self._compute_sim_mat(word_count_mat)
         svd_comps = self._svd_decomp(sim_mat, n_dim)
         norm_vectors = StandardScaler().fit_transform(svd_comps).T

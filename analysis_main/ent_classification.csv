@@ -1,1152 +1,1219 @@
 id,ent,classification
 0,median,summary statistic
-1,confidence interval,confidence interval
-2,statistically significant,null hypothesis testing
+1,statistically significant,null hypothesis testing
+2,confidence interval,confidence interval
 3,bootstrap,resampling
 4,correlation,correlation
 5,t test,t test
-6,mean,summary statistic
-7,ordinary least square,statistical estimation
-8,anova,anova
+6,anova,anova
+7,mean,summary statistic
+8,ordinary least square,ordinary least square
 9,p value,null hypothesis testing
-10,multivariate linear regression,linear regression
-11,r squared,model performance
-12,cluster analysis,cluster analysis
-13,time series linear interpolation,interpolation
-14,fe analysis,numerical method
-15,statistical significance,null hypothesis testing
+10,r squared,goodness of fit - linear regression
+11,multivariate linear regression,linear regression
+12,cluster analysis,cluster analysis - general
+13,fe analysis,numerical method
+14,linear interpolation,interpolation
+15,paired t test,t test
 16,correlation coefficient,correlation
-17,paired t test,t test
-18,wilcoxon signed rank test,nonparametric test
-19,spearman correlation,rank correlation
+17,spearman correlation,rank correlation
+18,statistical significance,null hypothesis testing
+19,wilcoxon signed rank test,nonparametric test
 20,multivariate logistic regression,logistic regression
-21,euclidean distance,distance metric
-22,null hypothesis,null hypothesis testing
-23,binomial test,binomial test
+21,null hypothesis,null hypothesis testing
+22,binomial test,binomial test
+23,euclidean distance,distance metric
 24,variance,summary statistic
-25,mutual information,information theory
-26,mann whitney u,nonparametric test
-27,analysis of variance,anova
+25,analysis of variance,anova
+26,mutual information,information theory
+27,mann whitney u,nonparametric test
 28,standard deviation,summary statistic
-29,odds ratio,logistic regression
-30,logistic regression,logistic regression
+29,logistic regression,logistic regression
+30,odds ratio,logistic regression
 31,mode,summary statistic
-32,quintile,summary statistic
-33,regression model,linear regression
-34,cox proportional hazard regression,survival model
-35,type i error,null hypothesis testing
-36,false discovery rate,multiple comparison correction
+32,cox proportional hazard regression,survival model
+33,quintile,summary statistic
+34,regression model,linear regression
+35,false discovery rate,multiple comparison correction
+36,type i error,type i error
 37,z test,z test
-38,maximum likelihood,statistical estimation
-39,mcmc,bayesian estimation
-40,markov chain monte carlo,bayesian estimation
-41,credible interval,confidence interval
-42,z score,preprocessing/normalization
-43,hierarchical clustering,cluster analysis
-44,standard error,statistical estimation
-45,confusion matrix,model performance
-46,linear regression,linear regression
-47,random effect model,mixed effect model/multilevel model
-48,em algorithm,optimization
-49,maximum likelihood estimation,statistical estimation
+38,mcmc,markov chain monte carlo
+39,markov chain monte carlo,markov chain monte carlo
+40,maximum likelihood,maximum likelilhood
+41,credible interval,credible interval
+42,hierarchical clustering,hierarchical clustering
+43,z score,z score
+44,standard error,standard error
+45,f test,anova
+46,confusion matrix,classification accuracy
+47,linear regression,linear regression
+48,random effect model,mixed/multilevel model
+49,maximum likelihood estimation,maximum likelilhood
 50,factor analysis,pca/factor analysis
-51,goodness of fit,model performance
-52,linear mixed model,mixed effect model/multilevel model
-53,fast fourier transform,signal processing
+51,goodness of fit,goodness of fit
+52,linear mixed model,mixed/multilevel model
+53,em algorithm,expectation maximization optimization
 54,pearson correlation,correlation
-55,meta analysis,meta analysis
+55,fast fourier transform,fourier analysis
 56,bonferroni correction,multiple comparison correction
-57,family wise error,multiple comparison correction
-58,generalized estimating equation,statistical estimation
-59,likelihood ratio,model performance
-60,likelihood ratio test,model performance
-61,poisson regression,poisson regression
-62,bootstrapping,resampling
-63,varimax rotation,pca/factor analysis
-64,autocorrelation,time series
+57,meta analysis,meta analysis
+58,generalized estimating equation,generalized estimating equations
+59,family wise error,multiple comparison correction
+60,likelihood ratio test,goodness of fit - likelihood ratio test
+61,likelihood ratio,goodness of fit - likelihood ratio test
+62,poisson regression,poisson regression
+63,bootstrapping,resampling
+64,varimax rotation,pca/factor analysis
 65,linear model,linear regression
-66,content analysis,thematic analysis
-67,fourier filter,signal processing
-68,effect size,effect size
-69,normal distribution,statistical distribution
-70,least significant difference,anova
+66,autocorrelation,time series - general
+67,content analysis,thematic analysis
+68,fourier filter,fourier analysis
+69,effect size,effect size
+70,normal distribution,statistical distribution
 71,binomial distribution,statistical distribution
-72,ancova,anova
-73,grounded theory,thematic analysis
-74,regression analysis,linear regression
+72,least significant difference,anova
+73,ancova,anova
+74,grounded theory,thematic analysis
 75,kolmogorov smirnov test,normality test
-76,monte carlo simulation,optimization
-77,full information maximum likelihood,statistical estimation
+76,regression analysis,linear regression
+77,monte carlo simulation,monte carlo method
 78,structural equation model,structural equation modeling
-79,listwise deletion,preprocessing/normalization
-80,distance matrix,distance metric
-81,one way analysis of variance,anova
-82,multivariable logistic regression,logistic regression
-83,analysis of covariance,anova
-84,significance level,null hypothesis testing
-85,statistical power,statistical power 
-86,z distribution,statistical distribution
-87,restricted maximum likelihood,statistical estimation
-88,proportional hazard model,survival model
-89,chi square test,chi square test
-90,log rank test,survival model
-91,two sample t test,t test
-92,kruskal wallis test,nonparametric test
-93,log likelihood ratio,model performance
-94,maximum likelihood method,statistical estimation
-95,log likelihood,model performance
-96,multinomial logistic regression,logistic regression
-97,mixed effect model,mixed effect model/multilevel model
-98,multiple imputation,missing value method
-99,wald test,model performance
-100,micropropagation,N/A
-101,ordinal logistic regression,logistic regression
-102,principal component analysis,pca/factor analysis
-103,k nearest neighbor,knn
-104,moderation analysis,linear regression
-105,general linear model,linear regression
-106,moving average,time series
-107,shapiro wilk test,normality test
-108,low pas filter,signal processing
-109,thematic analysis,thematic analysis
-110,gyromagnetic ratio,N/A
-111,chi square model,chi square test
-112,permutation algorithm,resampling
-113,mean squared error,model performance
-114,singular value decomposition,matrix factorization
-115,spectral analysis,signal processing
-116,auc,model performance
-117,area under the curve,model performance
+79,full information maximum likelihood,maximum likelilhood
+80,listwise deletion,listwise deletion
+81,distance matrix,distance metric
+82,one way analysis of variance,anova
+83,multivariable logistic regression,logistic regression
+84,χ test,N/A
+85,analysis of covariance,anova
+86,significance level,null hypothesis testing
+87,z distribution,statistical distribution
+88,statistical power,statistical power
+89,restricted maximum likelihood,maximum likelilhood
+90,proportional hazard model,survival model
+91,chi square test,chi square test
+92,log rank test,survival model
+93,two sample t test,t test
+94,kruskal wallis test,nonparametric test
+95,multinomial logistic regression,logistic regression
+96,log likelihood ratio,goodness of fit - likelihood ratio test
+97,log likelihood,maximum likelilhood
+98,maximum likelihood method,maximum likelilhood
+99,mixed effect model,mixed/multilevel model
+100,multiple imputation,multiple imputation
+101,wald test,wald test
+102,micropropagation,N/A
+103,ordinal logistic regression,logistic regression
+104,principal component analysis,pca/factor analysis
+105,k nearest neighbor,knn
+106,moderation analysis,moderation analysis
+107,general linear model,linear regression
+108,moving average,arima
+109,low pas filter,signal processing - general
+110,shapiro wilk test,normality test
+111,thematic analysis,thematic analysis
+112,gyromagnetic ratio,N/A
+113,chi square model,chi square test
+114,permutation algorithm,resampling
+115,mean squared error,goodness of fit - linear regression
+116,singular value decomposition,matrix factorization
+117,spectral analysis,signal processing - general
 118,repeated measure anova,anova
-119,roc,model performance
-120,wavelet analysis,signal processing
-121,posterior distribution,bayesian estimation
-122,latent semantic analysis,matrix factorization
-123,z statistic,z test
-124,cox proportional hazard model,survival model
-125,granger causality,time series
-126,chi square distribution,statistical distribution
-127,empirical bayes,bayesian estimation
-128,power level,statistical power 
-129,survival analysis,survival model
-130,multi level model,mixed effect model/multilevel model
-131,exploratory factor analysis,pca/factor analysis
-132,eigenvalue,pca/factor analysis
-133,receiver operating characteristic,model performance
-134,gaussian distribution,statistical distribution
-135,χ distribution,N/A
+119,auc,classification accuracy
+120,area under the curve,classification accuracy
+121,roc,classification accuracy
+122,wavelet analysis,wavelet analysis
+123,posterior distribution,bayesian estimation - general
+124,latent semantic analysis,matrix factorization
+125,z statistic,z test
+126,cox proportional hazard model,survival model
+127,granger causality,granger causality
+128,chi square distribution,statistical distribution
+129,empirical bayes,bayesian estimation - general
+130,power level,statistical power
+131,survival analysis,survival model
+132,multi level model,mixed/multilevel model
+133,eigenvalue,pca/factor analysis
+134,exploratory factor analysis,pca/factor analysis
+135,receiver operating characteristic,classification accuracy
 136,poisson distribution,statistical distribution
-137,latent class analysis,structural equation modeling
-138,wilcoxon rank sum test,nonparametric test
-139,permutation test,resampling
-140,parallel analysis,pca/factor analysis
-141,structural equation modeling,structural equation modeling
-142,multivariate regression,linear regression
-143,negative binomial regression,binomial regression
-144,chi square statistic,chi square test
-145,measurement invariance,structural equation modeling
+137,χ distribution,N/A
+138,gaussian distribution,statistical distribution
+139,latent class analysis,structural equation modeling
+140,permutation test,resampling
+141,wilcoxon rank sum test,nonparametric test
+142,parallel analysis,pca/factor analysis
+143,structural equation modeling,structural equation modeling
+144,multivariate regression,linear regression
+145,negative binomial regression,negative binomial regression
 146,confirmatory factor analysis,structural equation modeling
-147,weighted least square,statistical estimation
-148,wilcoxon mann whitney,nonparametric test
-149,multivariable linear regression,linear regression
-150,modularity,graph theory
-151,hierarchical regression,mixed effect model/multilevel model
-152,kernel density estimation,gaussian mixture model
-153,ci,confidence interval
-154,optic,cluster analysis
-155,high pas filter,signal processing
-156,confidence score,N/A
-157,linear discriminant analysis,linear discriminant analysis
-158,binary logistic regression,logistic regression
-159,cronbach alpha,reliability measure
-160,factorial anova,anova
-161,chi square analysis,chi square test
-162,fourier transform,signal processing
-163,goodness of fit index,model performance
-164,exponential distribution,statistical distribution
-165,cross correlation,time series
-166,uniform distribution,statistical distribution
-167,intraclass correlation coefficient,mixed effect model/multilevel model
-168,interpolation error,time series interpolation
-169,cholesky decomposition,matrix factorization
-170,bayesian estimation,bayesian estimation
-171,hierarchical linear regression,mixed effect model/multilevel model
-172,polynomial regression,nonlinear regression
-173,average analysis,N/A
-174,f statistic,anova
-175,fixed effect model,linear regression
-176,independent component analysis,independent component analysis
-177,cronbach α,reliability measure
-178,mediation analysis,linear regression
-179,bonferroni post hoc test,multiple comparison correction
-180,multivariable linear model,linear regression
-181,fisher exact test,fishers exact test
-182,tensor analysis,tensor factorization
-183,stepwise selection,variable selection
-184,cubic spline,interpolation
-185,log link function,poisson regression
-186,skewness,summary statistic
-187,multidimensional scaling,manifold learning
-188,lawrence berkeley,N/A
-189,cox regression,survival model
-190,nonlinear regression,nonlinear regression
-191,expectation maximization,optimization
-192,prior distribution,bayesian estimation
-193,hazard ratio,survival model
-194,autoregressive moving average,time series
-195,gamma distribution,statistical distribution
-196,gibbs sampling,bayesian estimation
-197,student t test,t test
-198,band pas filter,signal processing
-199,adjacency matrix,graph theory
-200,regression procedure,linear regression
-201,forward selection,variable selection
-202,wilcoxon mann whitney test,nonparametric test
-203,electric power,N/A
-204,discriminant analysis,linear discriminant analysis
-205,manova,cca/manova
-206,benjamini hochberg procedure,multiple comparison correction
-207,mcnemar test,nonparametric test
-208,support vector machine,support vector machine
-209,generalized linear model,generalized linear model
-210,kaplan meier analysis,survival model
-211,partial correlation,correlation
-212,path analysis,structural equation modeling
-213,measurement information,N/A
-214,intraclass correlation,mixed effect model/multilevel model
-215,generalized least square,statistical estimation
-216,repeated measure analysis of variance,anova
-217,correlation ratio,correlation
-218,kurtosis,summary statistic
-219,t model,N/A
-220,one component model,N/A
-221,latent class model,structural equation modeling
-222,eigenvector,pca/factor analysis
-223,dendrogram,cluster analysis
-224,multilevel regression,mixed effect model/multilevel model
-225,non informative prior,bayesian estimation
-226,credibility interval,confidence interval
-227,linear spline model,nonlinear regression
-228,hierarchical cluster analysis,cluster analysis
-229,log likelihood method,statistical estimation
-230,multilevel model,mixed effect model/multilevel model
-231,k mean clustering,cluster analysis
-232,jackknife,resampling
-233,survival model,survival model
-234,directed acyclic graph,graph theory
-235,alternative hypothesis,null hypothesis testing
-236,multivariate analysis of variance,cca/manova
-237,heading error,N/A
-238,logit regression,logistic regression
-239,squared euclidean distance,distance metric
-240,neural tuning,N/A
-241,sequential estimation,statistical estimation
-242,forward distance,N/A
-243,general estimating equation,statistical estimation
-244,k mean algorithm,cluster analysis
-245,simulated annealing,optimization
-246,random intercept model,mixed effect model/multilevel model
-247,bonferroni procedure,multiple comparison correction
-248,bland altman analysis,reliability measure
-249,kruskal wallis analysis of variance,nonparametric test
-250,pearson chi square,chi square test
-251,principal factor analysis,pca/factor analysis
-252,type ii error,null hypothesis testing
-253,p,null hypothesis testing
-254,exploratory regression,linear regression
-255,multiple comparison correction,multiple comparison correction
-256,standard chemiluminescence,N/A
-257,hotelling t,cca/manova
-258,benjamini hochberg correction,multiple comparison correction
-259,partial least square,partial least square
-260,pearson cross correlation,time series
-261,principal component value,pca/factor analysis
-262,birch,cluster analysis
-263,neural network,neural network
-264,fixed model,N/A
-265,infomax,optimization
-266,holm bonferroni method,multiple comparison correction
-267,statistical distribution,statistical distribution
-268,null distribution,null hypothesis testing
-269,funnel plot,meta analysis
-270,growth curve model,structural equation modeling
-271,bland altman plot,reliability measure
-272,complete linkage,cluster analysis
-273,regression imputation,missing value method
-274,spearmans rank correlation,rank correlation
-275,z,z test
-276,spearman rank correlation,rank correlation
-277,regression test,linear regression
-278,bland altman test,reliability measure
-279,logit function,logistic regression
-280,hierarchical logistic regression,logistic regression
-281,density estimation,gaussian mixture model
-282,independent sample t test,t test
-283,multilevel random,mixed effect model/multilevel model
-284,agatston score,N/A
-285,proportional hazard regression,survival model
-286,hazard function,survival model
-287,statistical hypothesis,null hypothesis testing
-288,similarity index,distance metric
-289,wavelet transform,signal processing
-290,maximum average,N/A
-291,nonlinear least square,statistical estimation
-292,length analysis,N/A
-293,monte carlo method,optimization
-294,multi dimensional scaling,manifold learning
-295,promax rotation,pca/factor analysis
-296,parallel test,pca/factor analysis
-297,hst,N/A
-298,orthogonal rotation,pca/factor analysis
-299,multinomial regression,logistic regression
-300,imagexpress,N/A
-301,markov model,markov model
-302,hilbert transform,signal processing
-303,survival test,survival model
-304,sandwich variance,statistical estimation
-305,correspondence analysis,correspondence analysis
-306,betweenness centrality,graph theory
-307,average path length,graph theory
-308,clustering coefficient,graph theory
-309,eigenvector centrality,graph theory
-310,canonical correlation analysis,cca/manova
-311,nonlinear model,nonlinear regression
-312,marrow transplantation,N/A
-313,power calculation,statistical power 
-314,graph clustering,graph theory
-315,characteristic d,N/A
-316,wilcoxon rank test,nonparametric test
-317,agglomerative hierarchical clustering,cluster analysis
-318,ligament insertion,N/A
-319,similarity matrix,distance metric
-320,maximum likelihood tree,statistical estimation
-321,likelihood distance,distance metric
-322,tetrachoric correlation,correlation
-323,hidden markov model,markov model
-324,bernoulli distribution,statistical distribution
-325,binomial regression,logistic regression
-326,d,effect size
-327,method of moment,statistical estimation
-328,canonical correlation,cca/manova
-329,f distribution,anova
-330,random forest,decision tree
-331,randomforest,decision tree
-332,structural equation analysis,structural equation modeling
-333,log linear model,poisson regression
-334,partial correlation coefficient,correlation
-335,statistical regression,linear regression
-336,binomial logistic regression,logistic regression
-337,n algorithm,N/A
-338,kriging,gaussian process regression
-339,repeated measure ancova,anova
-340,pairwise deletion,preprocessing/normalization
-341,principal axis factoring,pca/factor analysis
-342,mahalanobis distance,distance metric
-343,multilevel analysis,mixed effect model/multilevel model
-344,hazard regression,survival model
-345,robust standard error,statistical estimation
-346,oblique rotation,pca/factor analysis
-347,average linkage,cluster analysis
-348,r correlation,correlation
-349,fourier interpolation,signal processing
-350,kernel filter,image analysis
-351,multinomial distribution,statistical distribution
-352,linear distance,N/A
-353,linear deviation,N/A
-354,independent t test,t test
-355,complete regression,N/A
-356,analysis of similarity,distance matrix analysis
-357,rank regression,nonlinear regression
-358,statistical efficiency,statistical estimation
-359,gradient boosting,optimization
-360,redundancy analysis,cca/manova
-361,jaccard index,distance metric
-362,transcription analysis,N/A
-363,structural equation modelling,structural equation modeling
-364,gaussian mixture model,gaussian mixture model
-365,structural equation,structural equation modeling
-366,multiple network,N/A
-367,carlo simulation,optimization
-368,nearest neighbor interpolation,missing value method
-369,eigenvalue decomposition,pca/factor analysis
-370,beta distribution,statistical distribution
-371,graph theory,graph theory
-372,local efficiency,graph theory
-373,global efficiency,graph theory
-374,clique,graph theory
-375,phi coefficient,correlation
-376,p ranging,N/A
-377,regression plot,linear regression
-378,mean interval,N/A
-379,decision tree,decision tree
-380,sandwich estimation,statistical estimation
-381,promoter analysis,N/A
-382,polynomial interpolation,time series interpolation
-383,bandpass filter,signal processing
-384,mean imputation,missing value method
-385,meta regression analysis,meta analysis
-386,mixed linear model,mixed effect model/multilevel model
-387,t cell analysis,N/A
-388,kendall tau rank correlation,rank correlation
-389,physiological significance,N/A
-390,probit regression,logistic regression
-391,principal coordinate analysis,manifold learning
-392,full information likelihood estimation,statistical estimation
-393,natural history model,N/A
-394,linear stability analysis,numerical method
-395,complete analysis,N/A
-396,,N/A
-397,z isolation,N/A
-398,confidence value,N/A
-399,cubic spline interpolation,time series interpolation
-400,standard size,N/A
-401,mean squared distance,N/A
-402,maximum margin,support vector machine
-403,quadratic regression,nonlinear regression
-404,effect regression,N/A
-405,latent growth model,structural equation modeling
-406,linear test,N/A
-407,ridge regression,regularized regression
-408,spearmans rank test,rank correlation
-409,cronbachs α,reliability measure
-410,gaussian process,gaussian process regression
-411,hierarchical linear model,mixed effect model/multilevel model
-412,canonical variate,cca/manova
-413,mantel test,distance matrix analysis
-414,scalp distribution,N/A
-415,generalized least square estimation,statistical estimation
-416,area under a curve,model performance
-417,similarity model,N/A
-418,wilcoxon signed rank sum test,nonparametric test
-419,logit link function,logistic regression
-420,tsne,manifold learning
-421,t sne,manifold learning
-422,partial least square analysis,partial least square
-423,t post hoc test,t test
-424,rand index,graph theory
-425,self organizing map,neural network
-426,distance transform,N/A
-427,variance estimation,statistical estimation
-428,hospital clustering,N/A
-429,survival plot,survival model
-430,repeated measure multivariate analysis of variance,cca/manova
-431,forward motion,N/A
-432,linear growth model,structural equation modeling
-433,small world network,graph theory
-434,linear svm,support vector machine
-435,non negative matrix factorization,matrix factorization
-436,repeated measure manova,cca/manova
-437,z ratio,N/A
-438,laparotomy incision,N/A
-439,malawian,N/A
-440,exponential regression,nonlinear regression
-441,partial rank correlation,rank correlation
-442,random effect regression,mixed effect model/multilevel model
-443,procrustes analysis,image analysis
-444,f measure,model performance
-445,badness of fit,model performance
-446,behavioral analysis,N/A
-447,h interval,N/A
-448,mann whitney rank test,nonparametric test
-449,one dimensional model,N/A
-450,oncomine analysis,N/A
-451,correction matrix,image analysis
-452,f function,N/A
-453,polychoric correlation,correlation
-454,gibbs equation,N/A
-455,p distribution,N/A
-456,random forest method,decision tree
-457,meta analyze,meta analysis
-458,tobit regression,logistic regression
-459,empirical mode decomposition,signal processing
-460,likelihood estimation,statistical estimation
-461,loglinear model,poisson regression
-462,standard calculation,N/A
-463,genetic algorithm,optimization
-464,adaboost,optimization
-465,smoothing spline,time series interpolation
-466,multiple correlation,multiple comparison correction
-467,community detection,graph theory
-468,chi square index,chi square test
-469,graph distance,graph theory
-470,maze test,N/A
-471,experience sampling,N/A
-472,t interval,N/A
-473,glass test,N/A
-474,meta regression,meta analysis
-475,arima,time series
-476,fourier analysis,signal processing
-477,removal algorithm,N/A
-478,prior hypothesis,N/A
-479,entropy estimation,information theory
-480,intracluster correlation,mixed effect model/multilevel model
-481,canadian,N/A
-482,restricted likelihood,statistical estimation
-483,standard significance,null hypothesis testing
-484,monte carlo estimation,optimization
-485,kendall rank correlation,rank correlation
-486,generating distribution,N/A
-487,tensor tractography,N/A
-488,conceptual analysis,thematic analysis
-489,empirical likelihood,statistical estimation
-490,meta model,N/A
-491,random effect likelihood,mixed effect model/multilevel model
-492,fixed effect likelihood,mixed effect model/multilevel model
-493,random forest classification,decision tree
-494,behavioural analysis,N/A
-495,semipartial correlation,correlation
-496,rwjf,N/A
-497,log bayes,bayesian estimation
-498,measurement matrix,image analysis
-499,likelihood information,statistical estimation
-500,uniform scaling,image analysis
-501,matrix factorization,matrix factorization
-502,merging procedure,N/A
-503,jaccard distance,distance metric
-504,chi squared distribution,statistical distribution
-505,family wise α,N/A
-506,cy ratio,N/A
-507,independent regression,linear regression
-508,bayesian network,graphical model
-509,distance calculation,N/A
-510,genetic test,N/A
-511,gamma power,N/A
-512,linear,N/A
-513,kruskal wallis anova,nonparametric test
-514,odds regression,logistic regression
-515,prior self,N/A
-516,confidence network,N/A
-517,power index,N/A
-518,optic coefficient,N/A
-519,latent transition analysis,structural equation modeling
-520,lasso regression,regularized regression
-521,tensor estimation,tensor factorization
-522,distance tree,distance matrix analysis
-523,pearson coefficient,correlation
-524,examined self,N/A
-525,standard immunoblot,N/A
-526,squared multiple correlation,model performance
-527,weighted least square estimation,statistical estimation
-528,odds value,logistic regression
-529,detrended fluctuation analysis,time series
-530,gap detection,N/A
-531,bonferroni significance,multiple comparison correction
-532,log linear interpolation,time series interpolation
-533,hamming distance,distance metric
-534,standard svm,support vector machine
-535,maximum likelihood classification,N/A
-536,area under this curve,model performance
-537,spectral model,N/A
-538,nonnegative matrix factorization,matrix factorization
-539,standard level,N/A
-540,cox log rank test,survival model
-541,fisher test,fishers exact test
-542,general linearized model,generalized linear model
-543,support interval,N/A
-544,kernel algorithm,support vector machine
-545,t analysis,N/A
-546,one way analysis,N/A
-547,linear least square,statistical estimation
-548,measurement theory,N/A
-549,logit score,logistic regression
-550,regression rate,N/A
-551,hierarchical distribution,statistical distribution
-552,beta test,N/A
-553,where analysis,N/A
-554,multiple repeated,N/A
-555,borg score,N/A
-556,distance error,model performance
-557,linear scaling,optimization
-558,stepwise deletion,variable selection
-559,statistical distance,distance metric
-560,multivariate probit regression,logistic regression
-561,gamma scintillation,N/A
-562,jaccard coefficient,distance metric
-563,wilcoxon sum rank test,nonparametric test
-564,independent clustering,cluster analysis
-565,johnsen,N/A
-566,random forest classifier,decision tree
-567,panel d,N/A
-568,fuzzy c mean,cluster analysis
-569,posterior interval,confidence interval
-570,framework analysis,thematic analysis
-571,elastic net regularization,regularized regression
-572,kaplan meier plot,survival model
-573,minimal interval,N/A
-574,mutant analysis,N/A
-575,standard clustering,cluster analysis
-576,kl divergence,statistical estimation
-577,cox proportional hazard test,survival model
-578,junco,N/A
-579,false detection rate,model performance
-580,mixture analysis,N/A
-581,false discovery correction,multiple comparison correction
-582,standard hard,N/A
-583,repeated regression,N/A
-584,pico detection,N/A
-585,standard r,N/A
-586,beta power,statistical power
-587,empirical estimation,N/A
-588,blaming,N/A
-589,linear error,model performance
-590,median test,nonparametric test
-591,htlv,N/A
-592,jaccard similarity,distance metric
-593,confirmatory test,N/A
-594,neural tube,N/A
-595,standard index,N/A
-596,mann witney u,nonparametric test
-597,conditional estimation,N/A
-598,hazard characterization,N/A
-599,wilcoxon mann whitney rank sum test,nonparametric test
-600,nearest neighbor algorithm,knn
-601,statistical clustering,cluster analysis
-602,multidimensional model,N/A
-603,growth mixture model,structural equation modeling
-604,neural coupling,N/A
-605,svm classification,support vector machine
-606,multiple correlation coefficient,model performance
-607,one way,N/A
-608,cox hazard model,survival model
-609,pearson chi square test,chi square test
-610,log analysis,N/A
-611,latency interval,N/A
-612,p ratio,N/A
-613,method d,N/A
-614,ratio test,model performance
-615,standard t,N/A
-616,median interval,summary statistic
-617,cox proportional hazard analysis,survival model
-618,simulated test,N/A
-619,multivariate linear model,linear regression
-620,varying analysis,N/A
-621,canonical function,N/A
-622,statistically determine,N/A
-623,statistical t test,t test
-624,nonnegative least square,statistical estimation
-625,exponential growth model,nonlinear regression
-626,entrap,N/A
-627,absorption ratio,N/A
-628,interpolation rate,N/A
-629,chi square goodness of fit,chi square test
-630,squared standard error,model performance
-631,likelihood procedure,N/A
-632,brownian motion,markov model
-633,regression value,linear regression
-634,pearsons correlation,correlation
-635,t plot,N/A
-636,cox power,N/A
-637,correlation functionals,N/A
-638,support vector regression,support vector machine
-639,r coefficient,correlation
-640,error estimation,N/A
-641,policy model,N/A
-642,auc ∞,model performance
-643,multidimensional self,N/A
-644,uniform size,N/A
-645,structural correlation,N/A
-646,fixed interval,N/A
-647,principal axis analysis,pca/factor analysis
-648,intake distribution estimation,N/A
-649,correlation distance,distance metric
-650,regression multivariate,linear regression
-651,binary regression,logistic regression
-652,ordinary least square estimation,statistical estimation
-653,maximum linkage,cluster analysis
-654,multiple threading,N/A
-655,holm test,multiple comparison correction
-656,likelihood model,statistical estimation
-657,squared correlation coefficient,correlation
-658,fisher lsd test,anova
-659,benjamini correction,multiple comparison correction
-660,least square difference,statistical estimation
-661,beta regression,generalized linear model
-662,canonical score,cca/manova
-663,merging algorithm,N/A
-664,shape distribution,statistical distribution
-665,especially significant,N/A
-666,microstructural analysis,N/A
-667,random regression,mixed effect model/multilevel model
-668,least square estimation,statistical estimation
-669,multiple classification,N/A
-670,logistic multilevel regression,logistic regression
-671,map estimation,bayesian estimation
-672,atto,N/A
-673,maximum interval,N/A
-674,girvan newman algorithm,graph theory
-675,assortativity,graph theory
-676,wilcoxon mann whitney u,nonparametric test
-677,lasso regularization,regularized regression
-678,multivariate proportional hazard regression,survival model
-679,graph construction,graph theory
-680,comparison t test,t test
-681,pairwise subtraction,N/A
-682,effect depending,N/A
-683,cox proportional regression analysis,survival model
-684,random sampling error,statistical estimation
-685,fixed effect analysis,linear regression
-686,shear test,N/A
-687,finding analysis,N/A
-688,standard correction,N/A
-689,exploratory mediation analysis,linear regression
-690,median imputation,missing value method
-691,longpass filter,signal processing
-692,kruskal wallace test,nonparametric test
-693,kruskal wallis analysis,nonparametric test
-694,log regression,logistic regression
-695,forward simulation,N/A
-696,kurtosis coefficient,summary statistic
-697,random imputation,missing value method
-698,tensor decomposition,tensor factorization
-699,kolmogorov smirnoff test,normality test
-700,gauss newton algorithm,optimization
-701,dimensionality estimation,N/A
-702,regression error,model performance
-703,correlation calculation,correlation
-704,external rotation,N/A
-705,average likelihood,model performance
-706,bowtie algorithm,optimization
-707,mutual effect,N/A
-708,multivariate multiple regression,linear regression
-709,principal advantage,N/A
-710,mnso,N/A
-711,distance estimation,distance metric
-712,nonlinear svm,support vector machine
-713,cholesky factorization,matrix factorization
-714,latent model,N/A
-715,normal interval,N/A
-716,connected component analysis,graph theory
-717,correlation inherent,N/A
-718,lens power,N/A
-719,generating function,N/A
-720,fisher discriminant analysis,linear discriminant analysis
-721,weighted least square algorithm,statistical estimation
-722,logistic multilevel,logistic regression
-723,uniform interval,N/A
-724,regression matrix,N/A
-725,uniform illumination,N/A
-726,scintillation cocktail,N/A
-727,random coefficient model,mixed effect model/multilevel model
-728,nonlinear mixed model,nonlinear regression
-729,fourier difference,signal processing
-730,observational analysis,N/A
-731,characteristic distance,N/A
-732,odds score,logistic regression
-733,normal self,N/A
-734,karnofsky score,N/A
-735,poisson correction,N/A
-736,egger test,meta analysis
-737,maximum p,N/A
-738,kriging interpolation,gaussian process regression
-739,epidemic size,N/A
-740,logistic distribution,statistical distribution
-741,survival forest,decision tree
-742,decision theory,N/A
-743,linear steady,N/A
-744,salvage index,N/A
-745,exponential t,N/A
-746,p plot,N/A
-747,p promoter,N/A
-748,area under each curve,model performance
-749,effect hypothesis,N/A
-750,h efflux,N/A
-751,logistic multivariate regression,logistic regression
-752,cox proportional hazard ratio,survival model
-753,cox multivariate regression,survival model
-754,survival interval,N/A
-755,mutual discussion,N/A
-756,spatiotemporal analysis,N/A
-757,lineal regression,linear regression
-758,log likelihood distance,distance metric
-759,mean coefficient,N/A
-760,bayesian classification,bayesian estimation
-761,interpolation procedure,missing value method
-762,maximized likelihood,statistical estimation
-763,benjamini hochberg algorithm,multiple comparison correction
-764,korsmeyer peppas model,N/A
-765,random forest modeling,decision tree
-766,year interval,N/A
-767,hairless,N/A
-768,simulated tree,N/A
-769,hotelling test,cca/manova
-770,c interval,confidence interval
-771,clustering information,N/A
-772,standard bruker,N/A
-773,multilevel random effect model,mixed effect model/multilevel model
-774,cluster test,cluster analysis
-775,restricted log likelihood,statistical estimation
-776,forward calculation,N/A
-777,absorption test,N/A
-778,cell analysis,N/A
-779,lawrence classification,N/A
-780,canonical monte carlo,optimization
-781,linear effect model,N/A
-782,hierarchical mixture model,gaussian mixture model
-783,kernel trick,support vector machine
-784,repeated measure correlation,correlation
-785,manual analysis,N/A
-786,random effect analysis,mixed effect model/multilevel model
-787,starting size,N/A
-788,bonferroni posthoc test,multiple comparison correction
-789,multivariable proportional hazard model,survival model
-790,maximum likelihood theory,statistical estimation
-791,correlation parameter,correlation
-792,empirical correction,N/A
-793,subclass analysis,N/A
-794,general test,N/A
-795,meta algorithm,N/A
-796,family linkage,N/A
-797,ratio model,N/A
-798,prior interval,N/A
-799,boostrap,resampling
-800,dethique,N/A
-801,postural analysis,N/A
-802,principal component model,pca/factor analysis
-803,deems,N/A
-804,glass filter,N/A
-805,mutual inhibition,N/A
-806,independent monte carlo,optimization
-807,standard hypothesis,N/A
-808,multilevel multivariate,N/A
-809,multidrug efflux,N/A
-810,standard distance,N/A
-811,half power,N/A
-812,bi clustering,cluster analysis
-813,quadratic interpolation,time series interpolation
-814,forward information,N/A
-815,cox regression analysis,survival model
-816,log rank analysis,survival model
-817,bland altman procedure,reliability measure
-818,linear coupling,N/A
-819,exponential power,N/A
-820,intracranial bleeding,N/A
-821,distance ratio,N/A
-822,shorter interval,N/A
-823,linear discriminate analysis,linear discriminant analysis
-824,skewness coefficient,summary statistic
-825,correlation correction,N/A
-826,next nearest neighbor,knn
-827,bimatoprost,N/A
-828,alternative regression,N/A
-829,f ratio,anova
-830,matlab analysis,N/A
-831,wilcoxon mann,nonparametric test
-832,linear factor analysis,pca/factor analysis
-833,meta network,N/A
-834,multivariate proportional hazard model,survival model
-835,x analysis,N/A
-836,permutation t test,resampling
-837,co efflux,N/A
-838,exploratory cluster analysis,cluster analysis
-839,multiple tree,N/A
-840,gibbs distribution,bayesian estimation
-841,linear plot,N/A
-842,independent sample mann whitney u,nonparametric test
-843,hoc regression,N/A
-844,weighted least square fit,statistical estimation
-845,distance information,N/A
-846,distance squared,N/A
-847,p statistic,null hypothesis testing
-848,regression,linear regression
-849,regression algorithm,linear regression
-850,nutritive value,N/A
-851,euclidean clustering,cluster analysis
-852,multiple cross,N/A
-853,multidimensional measure,N/A
-854,generating theory,N/A
-855,law regression,N/A
-856,chiral analysis,N/A
-857,intra class correlation coefficient,mixed effect model/multilevel model
-858,multiparameter analysis,N/A
-859,where linkage,N/A
-860,kl distance,distance metric
-861,standard information,N/A
-862,modularity maximization,graph theory
-863,counterclockwise rotation,N/A
-864,linear size,N/A
-865,canonical distribution,N/A
-866,mean standard deviation,summary statistic
-867,ci–,confidence interval
-868,european network,N/A
-869,euclidean similarity,distance metric
-870,eigenvector decomposition,pca/factor analysis
-871,grit size,N/A
-872,likelihood,statistical estimation
-873,bland altman statistic,reliability measure
-874,cronbachs alpha,reliability measure
-875,chi square χ,chi square test
-876,prior power,N/A
-877,phi correlation,correlation
-878,similarity level,N/A
-879,rietveld analysis,N/A
-880,local information,N/A
-881,predicted regression,N/A
-882,hash function,N/A
-883,confidence filter,N/A
-884,betweeness centrality,graph theory
-885,poisson distance,distance metric
-886,permutation entropy,information theory
-887,intra class correlation,mixed effect model/multilevel model
-888,alternative clustering,N/A
-889,regularized least square,regularized regression
-890,principal component plot,pca/factor analysis
-891,louvain algorithm,graph theory
-892,one class analysis,N/A
-893,alternative distribution,N/A
-894,simulated model,N/A
-895,expectation maximisation,optimization
-896,kimura correction,N/A
-897,distance index,N/A
-898,false negative rate,model performance
-899,neural model,N/A
-900,leukocyte cell,N/A
-901,saturation level,N/A
-902,thematic network,thematic analysis
-903,multilevel repeated,N/A
-904,macroarray analysis,N/A
-905,liquid matrix,N/A
-906,cohens d,effect size
-907,instituto chico,N/A
-908,likelihood maximization,statistical estimation
-909,forward strand,N/A
-910,principal component regression analysis,pca/factor analysis
-911,mantel r,distance matrix analysis
-912,clique centrality,graph theory
-913,recombinant analysis,N/A
-914,neck rotation,N/A
-915,effect model,N/A
-916,p analysis,N/A
-917,standard selection,N/A
-918,merged analysis,N/A
-919,winsten regression,time series
-920,standard diffraction,N/A
-921,scanning interval,N/A
-922,standard division,N/A
-923,densitogram,N/A
-924,cell apoptosis,N/A
-925,gumbel distribution,N/A
-926,multiple detection,N/A
-927,r classification,N/A
-928,non linear regression,nonlinear regression
-929,self organising map,neural network
-930,distribution coefficient,N/A
-931,carcass analysis,N/A
-932,pelvis rotation,N/A
-933,carnegie classification,N/A
-934,monte carlo correction,multiple comparison correction
-935,general algorithm,N/A
-936,mitochondrial d,N/A
-937,calving interval,N/A
-938,mean classification,N/A
-939,holm bonferroni,multiple comparison correction
-940,multiple annealing,optimization
-941,bayesian computation,bayesian estimation
-942,decision matrix,N/A
-943,agar test,N/A
-944,coordinate rotation,N/A
-945,granuloma size,N/A
-946,oblique incision,N/A
-947,multiple interval,N/A
-948,z interval,N/A
-949,autocorrelation coefficient,time series
-950,rolling average,time series
-951,euler algorithm,numerical method
-952,chi test,chi square test
-953,interpolation model,time series interpolation
-954,weighted least square method,statistical estimation
-955,cointegration test,N/A
-956,apprehension test,N/A
-957,roll test,N/A
-958,polynomial logistic regression,nonlinear regression
-959,standard matrix,N/A
-960,lr analysis,N/A
-961,effect distribution,N/A
-962,band detection,N/A
-963,p distance,N/A
-964,nonlinear coupling,N/A
-965,p algorithm,N/A
-966,coulombic efficiency,N/A
-967,likelihood calculation,N/A
-968,absorption correction,N/A
-969,robust linear model,N/A
-970,linear link function,N/A
-971,minimal detection,N/A
-972,regression analyzes,N/A
-973,gauss distribution,statistical distribution
-974,p falciparum,N/A
-975,dahliae,N/A
-976,method average,N/A
-977,apical rotation,N/A
-978,p anisidine,N/A
-979,p extracellular,N/A
-980,fast fourier analysis,signal processing
-981,distance level,N/A
-982,distance deviation,N/A
-983,examined statistically,N/A
-984,logistic growth model,N/A
-985,kaplan meier test,survival model
-986,malthusian,N/A
-987,cochran test,nonparametric test
-988,ordinal regression,nonlinear regression
-989,cox hazard regression,survival model
-990,support vector classifier,support vector machine
-991,correlation measurement,N/A
-992,empirical correlation,N/A
-993,acea,N/A
-994,general analysis,N/A
-995,anima,N/A
-996,opacity classification,N/A
-997,confidence test,N/A
-998,maxchi,N/A
-999,optimum interpolation,N/A
-1000,quasibinomial distribution,statistical distribution
-1001,cluster network,N/A
-1002,distribution calculation,N/A
-1003,juke cantor algorithm,markov model
-1004,ecg interval,N/A
-1005,local duplication,N/A
-1006,blotting detection,N/A
-1007,satisfactory factor analysis,N/A
-1008,method of variance,N/A
-1009,path network,N/A
-1010,morgagni,N/A
-1011,conduct logistic regression,N/A
-1012,logic regression,N/A
-1013,orthogonal function,N/A
-1014,cox proportional hazard multivariate,survival model
-1015,standard plaque,N/A
-1016,z rotation,N/A
-1017,wald interval,confidence interval
-1018,global centrality,graph theory
-1019,local centrality,graph theory
-1020,ptz injection,N/A
-1021,betweenness centralization,graph theory
-1022,multilevel sampling,N/A
-1023,co ratio,N/A
-1024,orf,N/A
-1025,partial autocorrelation,time series
-1026,hazard index,survival model
-1027,repeated measure regression analysis,N/A
-1028,f model,N/A
-1029,tukeys post hoc test,anova
-1030,fall network,N/A
-1031,moving distance,N/A
-1032,groc,N/A
-1033,external power,N/A
-1034,knn classification,knn
-1035,standard sieve,N/A
-1036,clearance value,N/A
-1037,shapiro francia test,normality test
-1038,natural forest,N/A
-1039,unifrac algorithm,distance metric
-1040,kaplan meier model,survival model
-1041,centralized analysis,N/A
-1042,mutual relation,N/A
-1043,k nearest neighbour,knn
-1044,joining tree,N/A
-1045,local selection,N/A
-1046,cluster algorithm,cluster analysis
-1047,bonferroni t test,multiple comparison correction
-1048,statistic d,N/A
-1049,mutual cooperation,N/A
-1050,variance coefficient,N/A
-1051,chagrin fall,N/A
-1052,rabbit immunization,N/A
-1053,cubic equation,N/A
-1054,hierarchical average linkage,cluster analysis
-1055,forward swimming,N/A
-1056,multivariable proportional hazard regression,survival model
-1057,canonical correlation coefficient,cca/manova
-1058,mitochondrial distribution,N/A
-1059,oblique illumination,N/A
-1060,genetic interval,N/A
-1061,nonuniform distribution,statistical distribution
-1062,standard sampling,N/A
-1063,alfexpress,N/A
-1064,markov clustering,graph theory
-1065,significance calculation,N/A
-1066,nearest neighbor model,knn
-1067,conditional mutual information,information theory
-1068,mutual rank,N/A
-1069,mutual distance,N/A
-1070,random monte carlo,optimization
-1071,generating cdna,N/A
-1072,h transporting,N/A
-1073,kimura distance,distance metric
-1074,conversion algorithm,N/A
-1075,distance coefficient,N/A
-1076,bertalanffy growth model,time series
-1077,cox p value,survival model
-1078,cox logistic regression,survival model
-1079,multi dimensional model,N/A
-1080,guinier plot,N/A
-1081,hazard score,survival model
-1082,partial denaturation,N/A
-1083,local detection,N/A
-1084,effect α,N/A
-1085,structural decomposition,N/A
-1086,intervention analysis,N/A
-1087,anova decomposition,anova
-1088,maximum likelihood distance,N/A
-1089,p network,N/A
-1090,eg t test,N/A
-1091,similarity coefficient,N/A
-1092,mutual regulation,N/A
-1093,t network,N/A
-1094,power coefficient,statistical power
-1095,value imputation,N/A
-1096,distance model,N/A
-1097,linear mixture model,gaussian mixture model
-1098,clustering distance,N/A
-1099,partial least squared,partial least square
-1100,likelihood p,N/A
-1101,effect significance,N/A
-1102,benjamini hochberg test,multiple comparison correction
-1103,coordinate analysis,N/A
-1104,flex analysis,N/A
-1105,t α,N/A
-1106,random sampling model,N/A
-1107,likelihood interval,N/A
-1108,co analysis,N/A
-1109,hazard distribution,distance metric
-1110,distance sampling,N/A
-1111,f filter,N/A
-1112,measurement efficiency,N/A
-1113,significance index,N/A
-1114,chi square score,chi square test
-1115,involving analysis,N/A
-1116,non informative prior distribution,bayesian estimation
-1117,statistical self,N/A
-1118,unifrac significance,N/A
-1119,correlation estimation,N/A
-1120,kriging procedure,gaussian process regression
-1121,general least square,statistical estimation
-1122,yule model,N/A
-1123,power distance,N/A
-1124,binary probit regression,logistic regression
-1125,mann withney u,nonparametric test
-1126,fe regression,N/A
-1127,local currency,N/A
-1128,correlation clustering,cluster analysis
-1129,manganese sulfate,N/A
-1130,kernel analysis,N/A
-1131,cylindrical power,N/A
-1132,effect calculation,N/A
-1133,partial decomposition,N/A
-1134,factor test,N/A
-1135,measurement equation,N/A
-1136,empirical analysis,N/A
-1137,examined significance,N/A
-1138,standard scaling,N/A
-1139,maximum likelihood classifier,N/A
-1140,spectral filter,N/A
-1141,linear selection,N/A
-1142,factor network,N/A
-1143,funnel test,N/A
-1144,population growth model,N/A
-1145,bland and altman analysis,reliability measure
-1146,cross wavelet analysis,signal processing
-1147,grayscale distribution,N/A
-1148,mutual defection,N/A
-1149,linear hypothesis,N/A
-1150,p fraction,N/A
+147,chi square statistic,chi square test
+148,measurement invariance,structural equation modeling
+149,weighted least square,weighted/generalized least square estimation
+150,multivariable linear regression,linear regression
+151,wilcoxon mann whitney,nonparametric test
+152,modularity,graph theory
+153,hierarchical regression,mixed/multilevel model
+154,kernel density estimation,gaussian mixture model
+155,ci,confidence interval
+156,optic,cluster analysis - general
+157,high pas filter,signal processing - general
+158,confidence score,N/A
+159,linear discriminant analysis,linear discriminant analysis
+160,binary logistic regression,logistic regression
+161,cronbach alpha,cronbach's alpha
+162,factorial anova,anova
+163,chi square analysis,chi square test
+164,fourier transform,fourier analysis
+165,goodness of fit index,goodness of fit
+166,exponential distribution,statistical distribution
+167,cross correlation,time series - general
+168,uniform distribution,statistical distribution
+169,intraclass correlation coefficient,intraclass correlation
+170,interpolation error,interpolation
+171,cholesky decomposition,matrix factorization
+172,bayesian estimation,bayesian estimation - general
+173,hierarchical linear regression,mixed/multilevel model
+174,polynomial regression,nonlinear regression
+175,average analysis,N/A
+176,f statistic,anova
+177,fixed effect model,linear regression
+178,independent component analysis,independent component analysis
+179,cronbach α,cronbach's alpha
+180,mediation analysis,mediation analysis
+181,bonferroni post hoc test,multiple comparison correction
+182,fisher exact test,fishers exact test
+183,multivariable linear model,linear regression
+184,tensor analysis,tensor analysis
+185,cubic spline,interpolation
+186,stepwise selection,variable selection
+187,log link function,poisson regression
+188,skewness,summary statistic
+189,multidimensional scaling,manifold learning
+190,lawrence berkeley,N/A
+191,cox regression,survival model
+192,nonlinear regression,nonlinear regression
+193,expectation maximization,expectation maximization optimization
+194,prior distribution,bayesian estimation - general
+195,hazard ratio,survival model
+196,gamma distribution,statistical distribution
+197,autoregressive moving average,arima
+198,gibbs sampling,markov chain monte carlo
+199,student t test,t test
+200,band pas filter,signal processing - general
+201,adjacency matrix,graph theory
+202,regression procedure,linear regression
+203,forward selection,variable selection
+204,wilcoxon mann whitney test,nonparametric test
+205,electric power,N/A
+206,discriminant analysis,linear discriminant analysis
+207,manova,cca/manova
+208,benjamini hochberg procedure,multiple comparison correction
+209,mcnemar test,nonparametric test
+210,support vector machine,support vector machine
+211,generalized linear model,generalized linear model
+212,kaplan meier analysis,survival model
+213,partial correlation,partial correlation
+214,path analysis,structural equation modeling
+215,measurement information,N/A
+216,intraclass correlation,intraclass correlation
+217,generalized least square,weighted/generalized least square estimation
+218,correlation ratio,correlation
+219,repeated measure analysis of variance,anova
+220,kurtosis,summary statistic
+221,t model,N/A
+222,one component model,N/A
+223,latent class model,structural equation modeling
+224,eigenvector,pca/factor analysis
+225,dendrogram,hierarchical clustering
+226,multilevel regression,mixed/multilevel model
+227,non informative prior,bayesian non informative prior 
+228,credibility interval,credible interval
+229,linear spline model,nonlinear regression
+230,hierarchical cluster analysis,hierarchical clustering
+231,log likelihood method,maximum likelilhood
+232,multilevel model,mixed/multilevel model
+233,k mean clustering,k mean clustering
+234,jackknife,resampling
+235,survival model,survival model
+236,directed acyclic graph,graph theory
+237,alternative hypothesis,null hypothesis testing
+238,multivariate analysis of variance,cca/manova
+239,heading error,N/A
+240,logit regression,logistic regression
+241,squared euclidean distance,distance metric
+242,neural tuning,N/A
+243,sequential estimation,sequential estimation
+244,forward distance,N/A
+245,general estimating equation,generalized estimating equations
+246,k mean algorithm,k mean clustering
+247,simulated annealing,simulated annealing
+248,random intercept model,mixed/multilevel model
+249,bonferroni procedure,multiple comparison correction
+250,bland altman analysis,bland altman analysis
+251,kruskal wallis analysis of variance,nonparametric test
+252,pearson chi square,chi square test
+253,principal factor analysis,pca/factor analysis
+254,p score,null hypothesis testing
+255,p α,null hypothesis testing
+256,type ii error,type ii error
+257,exploratory regression,linear regression
+258,multiple comparison correction,multiple comparison correction
+259,standard chemiluminescence,N/A
+260,benjamini hochberg correction,multiple comparison correction
+261,hotelling t,cca/manova
+262,partial least square,partial least square
+263,pearson cross correlation,time series - general
+264,principal component value,pca/factor analysis
+265,birch,cluster analysis - general
+266,neural network,neural network
+267,fixed model,N/A
+268,infomax,independent component analysis
+269,holm bonferroni method,multiple comparison correction
+270,null distribution,null hypothesis testing
+271,statistical distribution,statistical distribution
+272,funnel plot,meta analysis
+273,growth curve model,growth curve model
+274,bland altman plot,bland altman analysis
+275,complete linkage,hierarchical clustering
+276,regression imputation,regression imputation
+277,spearmans rank correlation,rank correlation
+278,or,logistic regression
+279,spearman rank correlation,rank correlation
+280,regression test,linear regression
+281,bland altman test,bland altman analysis
+282,logit function,logistic regression
+283,hierarchical logistic regression,logistic regression
+284,density estimation,gaussian mixture model
+285,independent sample t test,t test
+286,multilevel random,mixed/multilevel model
+287,agatston score,N/A
+288,proportional hazard regression,survival model
+289,hazard function,survival model
+290,statistical hypothesis,null hypothesis testing
+291,wavelet transform,wavelet analysis
+292,similarity index,distance metric
+293,maximum average,N/A
+294,nonlinear least square,nonlinear regression
+295,length analysis,N/A
+296,monte carlo method,monte carlo method
+297,multi dimensional scaling,manifold learning
+298,parallel test,pca/factor analysis
+299,promax rotation,pca/factor analysis
+300,hst,N/A
+301,orthogonal rotation,pca/factor analysis
+302,multinomial regression,logistic regression
+303,imagexpress,N/A
+304,markov model,markov model
+305,hilbert transform,hilbert transform
+306,survival test,survival model
+307,sandwich variance,robust standard error
+308,correspondence analysis,correspondence analysis
+309,betweenness centrality,graph theory
+310,clustering coefficient,graph theory
+311,average path length,graph theory
+312,eigenvector centrality,graph theory
+313,canonical correlation analysis,cca/manova
+314,nonlinear model,nonlinear regression
+315,marrow transplantation,N/A
+316,power calculation,statistical power
+317,graph clustering,graph clustering
+318,characteristic d,N/A
+319,agglomerative hierarchical clustering,hierarchical clustering
+320,wilcoxon rank test,nonparametric test
+321,ligament insertion,N/A
+322,similarity matrix,distance metric
+323,maximum likelihood tree,maximum likelilhood
+324,likelihood distance,distance metric
+325,tetrachoric correlation,polychoric correlation
+326,hidden markov model,markov model
+327,bernoulli distribution,statistical distribution
+328,binomial regression,binomial regression
+329,dag,graph theory
+330,method of moment,method of moments
+331,canonical correlation,cca/manova
+332,f distribution,statistical distribution
+333,random forest,random forest decision tree
+334,randomforest,random forest decision tree
+335,structural equation analysis,structural equation modeling
+336,log linear model,poisson regression
+337,partial correlation coefficient,partial correlation
+338,statistical regression,linear regression
+339,binomial logistic regression,binomial regression
+340,n algorithm,N/A
+341,kriging,gaussian process regression
+342,repeated measure ancova,anova
+343,pairwise deletion,pairwise deletion
+344,principal axis factoring,pca/factor analysis
+345,mahalanobis distance,distance metric
+346,multilevel analysis,mixed/multilevel model
+347,f filter,N/A
+348,hazard regression,survival model
+349,robust standard error,robust standard error
+350,oblique rotation,pca/factor analysis
+351,average linkage,hierarchical clustering
+352,r correlation,correlation
+353,kernel filter,image analysis
+354,fourier interpolation,interpolation
+355,multinomial distribution,statistical distribution
+356,linear distance,N/A
+357,linear deviation,N/A
+358,independent t test,t test
+359,complete regression,N/A
+360,analysis of similarity,distance matrix analysis
+361,rank regression,nonlinear regression
+362,statistical efficiency,statistical efficiency
+363,t,N/A
+364,gradient boosting,gradient boosting
+365,redundancy analysis,redundancy analysis
+366,jaccard index,distance metric
+367,transcription analysis,N/A
+368,structural equation modelling,structural equation modeling
+369,gaussian mixture model,gaussian mixture model
+370,structural equation,structural equation modeling
+371,multiple network,N/A
+372,carlo simulation,monte carlo method
+373,nearest neighbor interpolation,nearest neighbor interpolation
+374,eigenvalue decomposition,pca/factor analysis
+375,beta distribution,statistical distribution
+376,global efficiency,graph theory
+377,graph theory,graph theory
+378,local efficiency,graph theory
+379,clique,graph theory
+380,phi coefficient,phi coefficient
+381,p ranging,N/A
+382,regression plot,linear regression
+383,mean interval,N/A
+384,decision tree,decision tree - general
+385,sandwich estimation,robust standard error
+386,promoter analysis,N/A
+387,polynomial interpolation,interpolation
+388,bandpass filter,signal processing - general
+389,mean imputation,mean imputation
+390,meta regression analysis,meta analysis
+391,z,N/A
+392,mixed linear model,mixed/multilevel model
+393,t cell analysis,N/A
+394,kendall tau rank correlation,rank correlation
+395,physiological significance,N/A
+396,probit regression,probit regression
+397,principal coordinate analysis,manifold learning
+398,full information likelihood estimation,maximum likelilhood
+399,natural history model,natural history model
+400,linear stability analysis,numerical method
+401,complete analysis,N/A
+402,,N/A
+403,z isolation,N/A
+404,confidence value,N/A
+405,cubic spline interpolation,interpolation
+406,standard size,N/A
+407,mean squared distance,N/A
+408,lr test,N/A
+409,maximum margin,support vector machine
+410,p size,N/A
+411,quadratic regression,nonlinear regression
+412,effect regression,N/A
+413,latent growth model,structural equation modeling
+414,linear test,N/A
+415,ridge regression,regularized regression
+416,spearmans rank test,rank correlation
+417,cronbachs α,cronbach's alpha
+418,gaussian process,gaussian process regression
+419,hierarchical linear model,mixed/multilevel model
+420,canonical variate,cca/manova
+421,mantel test,distance matrix analysis
+422,scalp distribution,N/A
+423,generalized least square estimation,weighted/generalized least square estimation
+424,area under a curve,classification accuracy
+425,similarity model,N/A
+426,wilcoxon signed rank sum test,nonparametric test
+427,logit link function,logistic regression
+428,tsne,manifold learning
+429,t sne,manifold learning
+430,partial least square analysis,partial least square
+431,t post hoc test,t test
+432,rand index,graph theory
+433,self organizing map,neural network
+434,distance transform,N/A
+435,variance estimation,N/A
+436,hospital clustering,N/A
+437,survival plot,survival model
+438,repeated measure multivariate analysis of variance,anova
+439,forward motion,N/A
+440,linear growth model,growth curve model
+441,small world network,graph theory
+442,linear svm,support vector machine
+443,non negative matrix factorization,matrix factorization
+444,repeated measure manova,cca/manova
+445,z ratio,N/A
+446,laparotomy incision,N/A
+447,malawian,N/A
+448,exponential regression,nonlinear regression
+449,partial rank correlation,rank correlation
+450,random effect regression,mixed/multilevel model
+451,procrustes analysis,image analysis
+452,f measure,classification accuracy
+453,badness of fit,goodness of fit
+454,behavioral analysis,N/A
+455,h interval,N/A
+456,mann whitney rank test,nonparametric test
+457,one dimensional model,N/A
+458,oncomine analysis,N/A
+459,correction matrix,image analysis
+460,f function,N/A
+461,polychoric correlation,polychoric correlation
+462,gibbs equation,N/A
+463,p distribution,N/A
+464,random forest method,random forest decision tree
+465,meta analyze,meta analysis
+466,tobit regression,tobit regression
+467,empirical mode decomposition,empirical model decomposition
+468,likelihood estimation,maximum likelilhood
+469,loglinear model,poisson regression
+470,standard calculation,N/A
+471,genetic algorithm,genetic algorithm
+472,phasing algorithm,N/A
+473,adaboost,adaboost
+474,smoothing spline,interpolation
+475,multiple correlation,linear regression
+476,community detection,graph theory
+477,chi square index,chi square test
+478,graph distance,graph theory
+479,maze test,N/A
+480,experience sampling,N/A
+481,t interval,N/A
+482,glass test,N/A
+483,meta regression,meta analysis
+484,arima,arima
+485,fourier analysis,fourier analysis
+486,removal algorithm,N/A
+487,prior hypothesis,N/A
+488,entropy estimation,information theory
+489,intracluster correlation,intraclass correlation
+490,canadian,N/A
+491,restricted likelihood,maximum likelilhood
+492,standard significance,null hypothesis testing
+493,monte carlo estimation,monte carlo method
+494,kendall rank correlation,rank correlation
+495,generating distribution,N/A
+496,tensor tractography,N/A
+497,conceptual analysis,thematic analysis
+498,empirical likelihood,empirical likelihood
+499,meta model,N/A
+500,random effect likelihood,mixed/multilevel model
+501,fixed effect likelihood,mixed/multilevel model
+502,random forest classification,random forest decision tree
+503,behavioural analysis,N/A
+504,semipartial correlation,partial correlation
+505,rwjf,N/A
+506,log bayes,bayesian estimation - general
+507,measurement matrix,image analysis
+508,likelihood information,maximum likelilhood
+509,uniform scaling,image analysis
+510,merging procedure,N/A
+511,matrix factorization,matrix factorization
+512,jaccard distance,distance metric
+513,chi squared distribution,statistical distribution
+514,family wise α,N/A
+515,cy ratio,N/A
+516,independent regression,linear regression
+517,bayesian network,graphical model
+518,distance calculation,N/A
+519,genetic test,N/A
+520,gamma power,N/A
+521,linear,N/A
+522,kruskal wallis anova,nonparametric test
+523,odds regression,logistic regression
+524,prior self,N/a
+525,confidence network,N/A
+526,power index,N/A
+527,optic coefficient,N/A
+528,latent transition analysis,structural equation modeling
+529,lasso regression,regularized regression
+530,tensor estimation,tensor analysis
+531,distance tree,distance matrix analysis
+532,pearson coefficient,correlation
+533,examined self,N/A
+534,standard immunoblot,N/A
+535,squared multiple correlation,goodness of fit - linear regression
+536,weighted least square estimation,weighted/generalized least square estimation
+537,odds value,logistic regression
+538,detrended fluctuation analysis,detrended fluctuation analysis
+539,gap detection,N/A
+540,bonferroni significance,multiple comparison correction
+541,log linear interpolation,interpolation
+542,hamming distance,distance metric
+543,standard svm,support vector machine
+544,maximum likelihood classification,maximum likelilhood
+545,area under this curve,multiple comparison correction
+546,spectral model,N/A
+547,p plot,N/A
+548,p ≤,N/A
+549,chisquare test,chi square test
+550,nonnegative matrix factorization,matrix factorization
+551,standard level,N/A
+552,cox log rank test,survival model
+553,fisher test,fishers exact test
+554,general linearized model,generalized linear model
+555,support interval,N/A
+556,kernel algorithm,support vector machine
+557,t analysis,N/A
+558,one way analysis,N/A
+559,linear least square,ordinary least square
+560,measurement theory,N/A
+561,logit score,logistic regression
+562,regression rate,N/A
+563,hierarchical distribution,statistical distribution
+564,beta test,N/A
+565,where analysis,N/A
+566,multiple repeated,N/A
+567,borg score,N/A
+568,distance error,N/A
+569,linear scaling,image analysis
+570,stepwise deletion,variable selection
+571,statistical distance,distance metric
+572,multivariate probit regression,probit regression
+573,gamma scintillation,N/A
+574,jaccard coefficient,distance metric
+575,wilcoxon sum rank test,nonparametric test
+576,f score,N/A
+577,independent clustering,cluster analysis - general
+578,johnsen,N/A
+579,random forest classifier,random forest decision tree
+580,panel d,N/A
+581,fuzzy c mean,fuzzy c mean algorithm
+582,posterior interval,credible interval
+583,framework analysis,thematic analysis
+584,oh,N/A
+585,elastic net regularization,regularized regression
+586,kaplan meier plot,survival model
+587,minimal interval,N/A
+588,mutant analysis,N/A
+589,standard clustering,cluster analysis - general
+590,– d,N/A
+591,kl divergence,kl divergence
+592,cox proportional hazard test,survival model
+593,d,N/A
+594,junco,N/A
+595,false detection rate,multiple comparison correction
+596,mixture analysis,N/A
+597,false discovery correction,multiple comparison correction
+598,p deletion,N/A
+599,standard hard,N/A
+600,repeated regression,N/A
+601,pico detection,N/A
+602,standard r,N/A
+603,beta power,statistical power
+604,empirical estimation,N/A
+605,blaming,N/A
+606,linear error,N/A
+607,median test,nonparametric test
+608,htlv,N/A
+609,f estimation,N/A
+610,jaccard similarity,distance metric
+611,confirmatory test,N/A
+612,neural tube,N/A
+613,standard index,N/A
+614,mann witney u,nonparametric test
+615,conditional estimation,N/A
+616,hazard characterization,N/A
+617,wilcoxon mann whitney rank sum test,nonparametric test
+618,nearest neighbor algorithm,knn
+619,statistical clustering,cluster analysis - general
+620,multidimensional model,N/A
+621,growth mixture model,structural equation modeling
+622,neural coupling,N/A
+623,svm classification,support vector machine
+624,multiple correlation coefficient,linear regression
+625,one way,N/A
+626,cox hazard model,survival model
+627,pearson chi square test,chi square test
+628,log analysis,N/A
+629,latency interval,N/A
+630,p ratio,N/A
+631,method d,N/A
+632,ratio test,goodness of fit - likelihood ratio test
+633,standard t,N/A
+634,median interval,summary statistic
+635,cox proportional hazard analysis,survival model
+636,simulated test,N/A
+637,multivariate linear model,linear regression
+638,varying analysis,N/A
+639,canonical function,N/A
+640,statistically determine,N/A
+641,cdfs,N/A
+642,statistical t test,t test
+643,nonnegative least square,weighted/generalized least square estimation
+644,exponential growth model,growth curve model
+645,entrap,N/A
+646,absorption ratio,N/A
+647,interpolation rate,N/A
+648,yule model,N/A
+649,chi square goodness of fit,chi square test
+650,likelihood procedure,N/A
+651,squared standard error,standard error
+652,brownian motion,markov model
+653,regression value,N/A
+654,pearsons correlation,correlation
+655,t plot,N/A
+656,cox power,N/A
+657,correlation functionals,N/A
+658,support vector regression,support vector machine
+659,r correlation coefficient,correlation
+660,r coefficient,correlation
+661,r test,N/A
+662,error estimation,N/A
+663,policy model,N/A
+664,auc ∞,classification accuracy
+665,multidimensional self,N/A
+666,uniform size,N/A
+667,structural correlation,N/A
+668,fixed interval,N/A
+669,principal axis analysis,pca/factor analysis
+670,intake distribution estimation,N/A
+671,correlation distance,distance metric
+672,regression multivariate,linear regression
+673,binary regression,logistic regression
+674,ordinary least square estimation,ordinary least square
+675,maximum linkage,hierarchical clustering
+676,multiple threading,N/A
+677,holm test,multiple comparison correction
+678,likelihood model,maximum likelilhood
+679,squared correlation coefficient,correlation
+680,fisher lsd test,anova
+681,benjamini correction,multiple comparison correction
+682,cl,N/A
+683,least square difference,ordinary least square
+684,beta regression,generalized linear model
+685,canonical score,cca/manova
+686,merging algorithm,N/A
+687,shape distribution,N/A
+688,measurement selection,N/A
+689,especially significant,N/A
+690,microstructural analysis,N/A
+691,random regression,N/A
+692,least square estimation,ordinary least square
+693,multiple classification,N/A
+694,logistic multilevel regression,logistic regression
+695,map estimation,maximum a posteriori estimation
+696,atto,N/A
+697,maximum interval,N/A
+698,girvan newman algorithm,graph theory
+699,j,N/A
+700,assortativity,graph theory
+701,wilcoxon mann whitney u,nonparametric test
+702,lasso regularization,regularized regression
+703,multivariate proportional hazard regression,survival model
+704,graph construction,graph theory
+705,comparison t test,N/A
+706,pairwise subtraction,N/A
+707,effect depending,N/A
+708,cox proportional regression analysis,survival model
+709,random sampling error,N/A
+710,fl,N/A
+711,fixed effect analysis,linear regression
+712,shear test,N/A
+713,finding analysis,N/A
+714,fatcat,N/A
+715,standard correction,N/A
+716,exploratory mediation analysis,mediation analysis
+717,median imputation,mediation analysis
+718,longpass filter,signal processing - general
+719,kruskal wallace test,nonparametric test
+720,kruskal wallis analysis,nonparametric test
+721,log regression,logistic regression
+722,forward simulation,N/A
+723,kurtosis coefficient,summary statistic
+724,random imputation,random imputation
+725,tensor decomposition,tensor analysis
+726,kolmogorov smirnoff test,normality test
+727,gauss newton algorithm,newton optimization
+728,dimensionality estimation,N/A
+729,regression error,goodness of fit - linear regression
+730,correlation calculation,correlation
+731,external rotation,N/A
+732,average likelihood,N/A
+733,bowtie algorithm,sequence analysis
+734,mutual effect,N/A
+735,multivariate multiple regression,linear regression
+736,principal advantage,N/A
+737,mnso,N/A
+738,distance estimation,distance metric
+739,nonlinear svm,support vector machine
+740,cholesky factorization,matrix factorization
+741,latent model,N/A
+742,normal interval,N/A
+743,connected component analysis,graph theory
+744,correlation inherent,N/A
+745,lens power,N/A
+746,generating function,N/A
+747,fisher discriminant analysis,linear discriminant analysis
+748,weighted least square algorithm,weighted/generalized least square estimation
+749,logistic multilevel,logistic regression
+750,uniform interval,N/A
+751,regression matrix,N/A
+752,mean clustering,cluster analysis - general
+753,uniform illumination,N/A
+754,scintillation cocktail,N/A
+755,random coefficient model,mixed/multilevel model
+756,nonlinear mixed model,mixed/multilevel model
+757,fourier difference,fourier analysis
+758,observational analysis,N/A
+759,characteristic distance,N/A
+760,odds score,logistic regression
+761,normal self,N/A
+762,karnofsky score,N/A
+763,poisson correction,N/A
+764,egger test,meta analysis
+765,maximum p,N/A
+766,kriging interpolation,gaussian process regression
+767,epidemic size,N/A
+768,logistic distribution,statistical distribution
+769,maximized likelihood,maximum likelilhood
+770,survival forest,decision tree - general
+771,decision theory,N/A
+772,rate regression,N/A
+773,linear steady,N/A
+774,salvage index,N/A
+775,exponential t,N/A
+776,p promoter,N/A
+777,area under each curve,classification accuracy
+778,effect hypothesis,N/A
+779,h efflux,N/A
+780,mean classification,classification accuracy
+781,logistic multivariate regression,logistic regression
+782,cox proportional hazard ratio,survival model
+783,cox multivariate regression,survival model
+784,survival interval,N/A
+785,mutual discussion,N/A
+786,spatiotemporal analysis,N/A
+787,lineal regression,linear regression
+788,log likelihood distance,distance metric
+789,cx detection,N/A
+790,mean coefficient,N/A
+791,bayesian classification,N/A
+792,interpolation procedure,N/A
+793,benjamini hochberg algorithm,multiple comparison correction
+794,korsmeyer peppas model,N/A
+795,random forest modeling,random forest decision tree
+796,year interval,N/A
+797,hairless,N/A
+798,simulated tree,N/A
+799,hotelling test,cca/manova
+800,c interval,N/A
+801,clustering information,N/A
+802,z →,N/A
+803,standard bruker,N/A
+804,multilevel random effect model,mixed/multilevel model
+805,cluster test,N/A
+806,restricted log likelihood,maximum likelilhood
+807,forward calculation,N/A
+808,absorption test,N/A
+809,cell analysis,N/A
+810,lawrence classification,N/A
+811,canonical monte carlo,monte carlo method
+812,mir,N/A
+813,linear effect model,N/A
+814,f ratio test,N/A
+815,hierarchical mixture model,gaussian mixture model
+816,kernel trick,support vector machine
+817,repeated measure correlation,correlation
+818,manual analysis,N/A
+819,random effect analysis,mixed/multilevel model
+820,× matrix,N/A
+821,starting size,N/A
+822,mean standard deviation,N/A
+823,bonferroni posthoc test,multiple comparison correction
+824,multivariable proportional hazard model,survival model
+825,maximum likelihood theory,maximum likelilhood
+826,correlation parameter,correlation
+827,empirical correction,N/A
+828,subclass analysis,N/A
+829,p test,N/A
+830,general test,N/A
+831,roll test,N/A
+832,meta algorithm,N/A
+833,family linkage,N/A
+834,ratio model,N/A
+835,prior interval,N/A
+836,boostrap,resampling
+837,dethique,N/A
+838,postural analysis,N/A
+839,t α,N/A
+840,principal component model,pca/factor analysis
+841,deems,N/A
+842,glass filter,N/A
+843,mutual inhibition,N/A
+844,independent monte carlo,monte carlo method
+845,standard hypothesis,N/A
+846,multilevel multivariate,mixed/multilevel model
+847,multidrug efflux,N/A
+848,standard distance,N/A
+849,half power,N/A
+850,uni dimensional model,N/A
+851,bi clustering,biclustering analysis
+852,quadratic interpolation,interpolation
+853,forward information,N/A
+854,cox regression analysis,survival model
+855,log rank analysis,survival model
+856,bland altman procedure,bland altman analysis
+857,linear coupling,N/A
+858,exponential power,N/A
+859,intracranial bleeding,N/A
+860,distance ratio,N/A
+861,shorter interval,N/A
+862,linear discriminate analysis,linear discriminant analysis
+863,skewness coefficient,summary statistic
+864,correlation correction,N/A
+865,next nearest neighbor,knn
+866,r classification,N/A
+867,bimatoprost,N/A
+868,alternative regression,N/A
+869,f ratio,anova
+870,matlab analysis,N/A
+871,wilcoxon mann,nonparametric test
+872,linear factor analysis,pca/factor analysis
+873,meta network,N/A
+874,multivariate proportional hazard model,survival model
+875,p,N/A
+876,x analysis,N/A
+877,permutation t test,resampling
+878,linear α,N/A
+879,correlation r,correlation
+880,co efflux,N/A
+881,exploratory cluster analysis,cluster analysis - general
+882,multiple tree,N/A
+883,gibbs distribution,markov chain monte carlo
+884,linear plot,N/A
+885,independent sample mann whitney u,nonparametric test
+886,hoc regression,N/A
+887,weighted least square fit,weighted/generalized least square estimation
+888,distance information,N/A
+889,distance squared,N/A
+890,p statistic,N/A
+891,regression,linear regression
+892,regression algorithm,linear regression
+893,nutritive value,N/A
+894,euclidean clustering,cluster analysis - general
+895,multiple cross,N/A
+896,multidimensional measure,N/A
+897,generating theory,N/A
+898,law regression,N/A
+899,chiral analysis,N/A
+900,intra class correlation coefficient,intraclass correlation
+901,multiparameter analysis,N/A
+902,where linkage,N/A
+903,kl distance,kl divergence
+904,standard information,N/A
+905,modularity maximization,graph theory
+906,counterclockwise rotation,N/A
+907,linear size,N/A
+908,canonical distribution,N/A
+909,ci–,N/A
+910,independent sample test,N/A
+911,european network,N/A
+912,euclidean similarity,distance metric
+913,eigenvector decomposition,pca/factor analysis
+914,standard deviational,N/A
+915,grit size,N/A
+916,likelihood,N/A
+917,bland altman statistic,bland altman analysis
+918,cronbachs alpha,cronbach's alpha
+919,chi square χ,chi square test
+920,prior power,N/A
+921,phi correlation,phi coefficient
+922,similarity level,N/A
+923,rabbit immunization,N/A
+924,rietveld analysis,N/A
+925,local information,N/A
+926,predicted regression,N/A
+927,hash function,N/A
+928,confidence filter,N/A
+929,betweeness centrality,graph theory
+930,knn classification,knn
+931,poisson distance,distance metric
+932,permutation entropy,information theory
+933,intra class correlation,intraclass correlation
+934,alternative clustering,N/A
+935,x test,chi square test
+936,regularized least square,regularized regression
+937,principal component plot,pca/factor analysis
+938,louvain algorithm,graph theory
+939,one class analysis,N/A
+940,alternative distribution,N/A
+941,simulated model,N/A
+942,expectation maximisation,expectation maximization optimization
+943,kimura correction,N/A
+944,distance index,N/A
+945,false negative rate,multiple comparison correction
+946,neural model,N/A
+947,leukocyte cell,N/A
+948,saturation level,N/A
+949,thematic network,thematic analysis
+950,multilevel repeated,mixed/multilevel model
+951,macroarray analysis,N/A
+952,liquid matrix,N/A
+953,cohens d,effect size
+954,instituto chico,N/A
+955,likelihood maximization,maximum likelilhood
+956,forward strand,N/A
+957,principal component regression analysis,pca/factor analysis
+958,mantel r,distance matrix analysis
+959,clique centrality,graph theory
+960,recombinant analysis,sequence analysis
+961,neck rotation,N/A
+962,effect model,N/A
+963,p analysis,N/A
+964,standard selection,N/A
+965,merged analysis,N/A
+966,winsten regression,time series - general
+967,standard diffraction,N/A
+968,scanning interval,N/A
+969,standard division,N/A
+970,densitogram,N/A
+971,cell apoptosis,N/A
+972,gumbel distribution,N/A
+973,multiple detection,N/A
+974,non linear regression,nonlinear regression
+975,self organising map,neural network
+976,distribution coefficient,N/A
+977,carcass analysis,N/A
+978,pelvis rotation,N/A
+979,carnegie classification,N/A
+980,monte carlo correction,monte carlo method
+981,neural analysis,neural network
+982,general algorithm,N/A
+983,mitochondrial d,N/A
+984,calving interval,N/A
+985,hotelling t test,cca/manova
+986,holm bonferroni,multiple comparison correction
+987,multiple annealing,simulated annealing
+988,bayesian computation,bayesian estimation - general
+989,i value,N/A
+990,decision matrix,N/A
+991,agar test,N/A
+992,coordinate rotation,N/A
+993,granuloma size,N/A
+994,k test,N/A
+995,oblique incision,N/A
+996,multiple interval,N/A
+997,z interval,N/A
+998,meta analyzes,meta analysis
+999,autocorrelation coefficient,time series - general
+1000,rolling average,time series - general
+1001,euler algorithm,numerical method
+1002,linear regression analysis,linear regression
+1003,chi test,chi square test
+1004,interpolation model,interpolation
+1005,weighted least square method,weighted/generalized least square estimation
+1006,ohi,N/A
+1007,cointegration test,N/A
+1008,apprehension test,N/A
+1009,polynomial logistic regression,logistic regression
+1010,standard matrix,N/A
+1011,fisher post hoc test,anova
+1012,lr analysis,logistic regression
+1013,log odds ratio,logistic regression
+1014,effect distribution,N/A
+1015,band detection,signal processing - general
+1016,p distance,N/A
+1017,nonlinear coupling,signal processing - general
+1018,p algorithm,N/A
+1019,coulombic efficiency,N/A
+1020,likelihood calculation,maximum likelilhood
+1021,absorption correction,N/A
+1022,robust linear model,N/A
+1023,linear link function,linear regression
+1024,minimal detection,N/A
+1025,regression analyzes,linear regression
+1026,gauss distribution,statistical distribution
+1027,p falciparum,N/A
+1028,dahliae,N/A
+1029,method average,N/A
+1030,apical rotation,N/A
+1031,p anisidine,N/A
+1032,p extracellular,N/A
+1033,wear test,N/A
+1034,fast fourier analysis,fourier analysis
+1035,distance level,N/A
+1036,distance deviation,N/A
+1037,examined statistically,N/A
+1038,logistic growth model,growth curve model
+1039,kaplan meier test,survival model
+1040,malthusian,N/A
+1041,cochran test,nonparametric test
+1042,ordinal regression,nonlinear regression
+1043,cox hazard regression,survival model
+1044,support vector classifier,support vector machine
+1045,correlation measurement,correlation
+1046,empirical correlation,correlation
+1047,acea,N/A
+1048,general analysis,N/A
+1049,anima,N/A
+1050,opacity classification,N/A
+1051,confidence test,N/A
+1052,maxchi,N/A
+1053,optimum interpolation,N/A
+1054,quasibinomial distribution,statistical distribution
+1055,cluster network,N/A
+1056,wilcoxon singed rank test,nonparametric test
+1057,distribution calculation,N/A
+1058,juke cantor algorithm,markov model
+1059,ecg interval,N/A
+1060,han algorithm,numerical method
+1061,local duplication,N/A
+1062,p exact test,N/A
+1063,blotting detection,N/A
+1064,satisfactory factor analysis,N/A
+1065,method of variance,N/A
+1066,ml,N/A
+1067,path network,structural equation modeling
+1068,morgagni,N/A
+1069,conduct logistic regression,logistic regression
+1070,logic regression,logic regression
+1071,orthogonal function,N/A
+1072,cox proportional hazard multivariate,survival model
+1073,standard plaque,N/A
+1074,z rotation,N/A
+1075,wald interval,confidence interval
+1076,global centrality,graph theory
+1077,local centrality,graph theory
+1078,ptz injection,N/A
+1079,betweenness centralization,graph theory
+1080,multilevel sampling,resampling
+1081,co ratio,N/A
+1082,nonlinear scaling,image analysis
+1083,d test,N/A
+1084,orf,N/A
+1085,partial autocorrelation,time series - general
+1086,hazard index,survival model
+1087,repeated measure regression analysis,linear regression
+1088,f model,N/A
+1089,tukeys post hoc test,anova
+1090,fall network,N/A
+1091,moving distance,distance metric
+1092,groc,N/A
+1093,external power,N/A
+1094,standard sieve,N/A
+1095,clearance value,N/A
+1096,shapiro francia test,normality test
+1097,natural forest,N/A
+1098,unifrac algorithm,distance metric
+1099,kaplan meier model,survival model
+1100,error,N/A
+1101,centralized analysis,N/A
+1102,mutual relation,N/A
+1103,k nearest neighbour,knn
+1104,joining tree,N/A
+1105,local selection,N/A
+1106,correlation estimation,N/A
+1107,cluster algorithm,cluster analysis - general
+1108,bonferroni t test,multiple comparison correction
+1109,statistic d,N/A
+1110,mutual cooperation,N/A
+1111,variance coefficient,N/A
+1112,chagrin fall,N/A
+1113,cubic equation,N/A
+1114,hierarchical average linkage,hierarchical clustering
+1115,forward swimming,N/A
+1116,multivariable proportional hazard regression,survival model
+1117,canonical correlation coefficient,cca/manova
+1118,mitochondrial distribution,N/A
+1119,oblique illumination,N/A
+1120,genetic interval,N/A
+1121,nonuniform distribution,statistical distribution
+1122,standard sampling,N/A
+1123,alfexpress,N/A
+1124,markov clustering,graph theory
+1125,significance calculation,null hypothesis testing
+1126,nearest neighbor model,knn
+1127,conditional mutual information,information theory
+1128,mutual rank,N/A
+1129,mutual distance,N/A
+1130,random monte carlo,monte carlo method
+1131,p regression,N/A
+1132,generating cdna,N/A
+1133,h transporting,N/A
+1134,kimura distance,distance metric
+1135,conversion algorithm,N/A
+1136,distance coefficient,distance metric
+1137,bertalanffy growth model,growth curve model
+1138,cox p value,survival model
+1139,cox logistic regression,N/A
+1140,multi dimensional model,N/A
+1141,guinier plot,N/A
+1142,hazard score,N/A
+1143,partial denaturation,N/A
+1144,local detection,N/A
+1145,multivariate hierarchical regression,mixed/multilevel model
+1146,effect α,N/A
+1147,structural decomposition,N/A
+1148,intervention analysis,N/A
+1149,anova decomposition,anova
+1150,maximum likelihood distance,distance metric
+1151,p network,N/A
+1152,t network,N/A
+1153,eg t test,N/A
+1154,similarity coefficient,distance metric
+1155,mutual regulation,N/A
+1156,power coefficient,N/A
+1157,value imputation,N/A
+1158,distance model,N/A
+1159,linear mixture model,gaussian mixture model
+1160,clustering distance,N/A
+1161,partial least squared,partial least square
+1162,likelihood p,N/A
+1163,effect significance,N/A
+1164,benjamini hochberg test,multiple comparison correction
+1165,coordinate analysis,manifold learning
+1166,flex analysis,N/A
+1167,random sampling model,N/A
+1168,likelihood interval,N/A
+1169,co analysis,N/A
+1170,hazard distribution,N/A
+1171,distance sampling,N/A
+1172,t square test,N/A
+1173,co distribution,N/A
+1174,measurement efficiency,N/A
+1175,significance index,N/A
+1176,chi square score,chi square test
+1177,involving analysis,N/A
+1178,non informative prior distribution,bayesian non informative prior 
+1179,statistical self,N/A
+1180,unifrac significance,N/A
+1181,kriging procedure,gaussian process regression
+1182,general least square,weighted/generalized least square estimation
+1183,power distance,N/A
+1184,null correlation,N/A
+1185,binary probit regression,probit regression
+1186,mann withney u,nonparametric test
+1187,fe regression,N/A
+1188,local currency,N/A
+1189,correlation clustering,cluster analysis - general
+1190,r,N/A
+1191,manganese sulfate,N/A
+1192,km ratio,N/A
+1193,kernel analysis,N/A
+1194,cylindrical power,N/A
+1195,effect calculation,N/A
+1196,partial decomposition,N/A
+1197,factor test,N/A
+1198,measurement equation,N/A
+1199,hazard test,N/A
+1200,empirical analysis,N/A
+1201,examined significance,N/A
+1202,standard scaling,N/A
+1203,maximum likelihood classifier,maximum likelilhood
+1204,spectral filter,signal processing - general
+1205,linear selection,N/A
+1206,factor network,N/A
+1207,funnel test,meta analysis
+1208,class analysis,N/A
+1209,land model,N/A
+1210,population growth model,growth curve model
+1211,bland and altman analysis,bland altman analysis
+1212,cross wavelet analysis,wavelet analysis
+1213,grayscale distribution,N/A
+1214,mutual defection,N/A
+1215,fast maximum likelihood,maximum likelilhood
+1216,linear hypothesis,N/A
+1217,p fraction,N/A

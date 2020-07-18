@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import pickle
 
-from journal_classification.custom_transformers import AbstractSelector, \
+from custom_transformers import AbstractSelector, \
     JournalTitleSelector, TitleSelector
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_selection import SelectKBest, chi2
@@ -58,7 +58,7 @@ def run_classifier_cv(training_data, nb_classifier, n_folds, n_repeats):
         preds = nb_classifier.predict(X_test)
         score = accuracy_score(y_test, preds)
         all_scores.append(score)
-    print(f'Total accuracy: %{np.mean(all_scores)}')
+    print('Total accuracy: %{}'.format(np.mean(all_scores)))
 
 
 def train_final_classifier(training_data, nb_classifier):

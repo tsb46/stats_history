@@ -62,8 +62,11 @@ class EntityNetwork(EntityBase):
             plt.ylabel('Component Weight')
             plt.title(f'Tensor Component {comp}')
         elif display_opt == 'domain':
-            plt.stem(self.network_domains, self.factors[2][:,comp])
-            plt.xticks(rotation=45)
+            markerline, stemlines, baseline = plt.stem(
+                self.network_domains, self.factors[2][:,comp], ':'
+            )
+            plt.setp(stemlines, 'linewidth', 3)
+            plt.xticks(rotation=90, size=15, weight='bold')
             plt.xlabel('Domain')
         plt.ylabel('Component Weight')
         plt.title(f'Tensor Component {comp}')

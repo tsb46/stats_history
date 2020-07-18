@@ -41,7 +41,6 @@ class EntityBase:
             index=self.ents['word_count_matrix']['pmid2id'],
             columns=[id2voc[indx] for indx in range(len(id2voc))]
         )
-        word_count_df['article_counts'] = self.ents['word_count_matrix']['article_counts']
         # If the user specified extra columns of article info be added
         if additional_cols is not None:
             additional_data = {pmid: {col: self.ents['ents'][pmid][col] 
@@ -49,6 +48,7 @@ class EntityBase:
                               for pmid in self.ents['ents']}
             additional_data_df = pd.DataFrame.from_dict(additional_data, 
                                                         orient='index')
+            additional_data_df = additional_data_df.reindex(word_count_df.index)
             return word_count_df, additional_data_df
 
         return word_count_df
@@ -58,35 +58,6 @@ class EntityBase:
         ents_len_counter = Counter(ents_len)
         return ents_len_counter
     
-    def entity_decomposition(self, alg='nmf', n_comp=200, sparsity=0, normalize_feat=False):
-        if alg == 'nmf':
-            decomp = NMF(n_components=n_comp, init='random', alpha=sparsity)
-        elif alg == 'sparsepca':
-            decomp = SparsePCA(n_components=n_comp, alpha=sparsity)
-        elif alg == 'dictlearn':
-            decomp = DictionaryLearning(n_components=n_comp, alpha=sparsity,
-                                        positive_code=True, positive_dict=True)
-        word_count_matrix = self.ents['word_count_matrix']['matrix']
-        if normalize_feat:
-            word_count_matrix = normalize(word_count_matrix, norm='l1', axis=0)
-        decomp.fit(word_count_matrix)
-        component_weights = decomp.components_
-        component_scores = decomp.transform(word_count_matrix)
-        return {
-            'weights': component_weights,
-            'scores': component_scores
-        }
-    
-    def entity_decomp_query(self, decomp, comp, top_n=10, normalized=True):
-        vocab = list(self.ents['word_count_matrix']['voc2id'].keys())
-        weights_matrix=decomp['weights']
-        if normalized:
-            weights_matrix = normalize(weights_matrix, norm='l1', axis=0)
-        weight_vec = weights_matrix[comp, :]
-        sort_indices = np.flip(weight_vec.argsort())
-        for i in range(top_n):
-            print('{} : {} \n'.format(vocab[sort_indices[i]],
-                                      weight_vec[sort_indices[i]]))
     def process_ents(self):
         article_dicts = self._pull_ents()
         # convert list of pubmed dicts to dictionary indexed by pmid
