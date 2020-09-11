@@ -7,7 +7,6 @@ from analysis_main.ents_base import EntityBase
 from datetime import datetime
 from sklearn.preprocessing import Normalizer
 from scipy.spatial.distance import squareform
-from tensorly.decomposition import parafac
 import tensortools as tt
 
 
@@ -74,8 +73,6 @@ class EntityNetwork(EntityBase):
     def tensor_decomp(self, network_tensor, n_comp, voc2id):
         id2voc = {id: voc for voc, id in voc2id.items()}
         self.ent_vocab = [id2voc[i] for i in range(len(voc2id))]
-#         self.weights, self.factors = parafac(network_tensor, n_comp, init='random', 
-#                                              non_negative=True, normalize_factors=True)
         tensors = tt.ncp_bcd(network_tensor, n_comp, verbose=False)
         self.factors = tensors.factors.rebalance()
     
