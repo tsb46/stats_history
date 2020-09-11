@@ -7,15 +7,29 @@ Methods for data analysis in the biomedical, life and social sciences are develo
 ## Getting Started
 * Note, some of these steps are only necessary to replicate the results in the study. If you're interested in specific components of the preprocessing and analysis pipeline, some of these steps are not necessary.
 
-### 1. Installing
+## Installing
+All of the code in this repo was run with Python 3.7. Not 100% sure code will work with other versions of Python 3.
+Assuming Git has already been installed on your desktop, copy and paste the following code into your terminal to download the repo:
 ```
 git clone https://github.com/tsb46/stats_history.git
 ```
-Then, in the base directory install all necessary packages (in requirements.txt):
+Then, in the base directory of the repo ('stats_history'), pip install all necessary packages (in requirements.txt) with the following command in the terminal:
 ```
-
+pip install -r requirements.txt
 ```
-
+In order to run the text preprocessing described in the paper, you will need to download some data from NLTK and download one of SpaCy's english language models:
+#### NLTK Downloads 
+In the Python interpreter:
+```
+import nltk
+nlkt.download('punkt') # For NLTK word tokenizer
+nltk.download('wordnet') # For NLTK WordNet Lemmatizer
+```
+#### SpaCy Model Download
+In the terminal:
+```
+python -m spacy download en_core_web_sm
+```
 ### 2. Download all Pubmed Open Access Subset and Author Manuscript Collection XML files from the Pubmed FTP Service (https://ftp.ncbi.nlm.nih.gov/pub/pmc/).
 * Pubmed Open Access Subset files: https://ftp.ncbi.nlm.nih.gov/pub/pmc/oa_bulk/
 * Author Manuscript Collection files: https://ftp.ncbi.nlm.nih.gov/pub/pmc/manuscript/
