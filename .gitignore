@@ -6,7 +6,5 @@ __pycache__/
 .ipynb_checkpoints/
 # Ignore data folder
 /data
-# Ignore pubmed_parser
-/pubmed_parser
 #Ignore test.py script
 test.py
