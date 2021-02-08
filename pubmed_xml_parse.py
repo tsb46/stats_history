@@ -5,9 +5,10 @@ from multiprocessing import Pool
 
 class PubmedParser:
     # Define class attribute - 'method_sec_markers'
-    method_sec_markers = ['method', 'material', 'measure', 'analysis', 'statistical']
+    method_sec_markers = ['method', 'material', 'measure', 'analysis', 
+    'statistical', 'experimental', 'analyses']
 
-    def __init__(self, parallel_cores=8, verbose=False):
+    def __init__(self, parallel_cores=1, verbose=False):
         self.verbose = verbose
         self.par_cores = parallel_cores
 
@@ -18,6 +19,9 @@ class PubmedParser:
         'parse_pubmed_paragrah'
         :return: boolean - 0 (false) or 1 (true)
         """
+        section_list = [dict_info['section'] for dict_info in pubmed_xml
+                        if dict_info['section'] != '']
+        import pdb; pdb.set_trace()
         section_list = [dict_info['section'] for dict_info in pubmed_xml
                         if any(marker in dict_info['section'].lower()
                                for marker in self.method_sec_markers)
@@ -51,13 +55,14 @@ class PubmedParser:
         :return: list of pubmed dicts
         """
         xml_paths = pp.list_xml_path(xml_folder)
-        pool = Pool(self.par_cores)
-        if self.verbose:
-            parsed_articles = list(tqdm.tqdm(pool.imap_unordered(
-                self.parse_pubmed_article, xml_paths), total=len(xml_paths)))
-        else:
-            parsed_articles = list(pool.imap_unordered(self.parse_pubmed_article,
-                                            xml_paths))
+        # pool = Pool(self.par_cores)
+        # if self.verbose:
+        #     parsed_articles = list(tqdm.tqdm(pool.imap_unordered(
+        #         self.parse_pubmed_article, xml_paths), total=len(xml_paths)))
+        # else:
+        #     parsed_articles = list(pool.imap_unordered(self.parse_pubmed_article,
+        #                                     xml_paths))
+        test = [self.parse_pubmed_article(path) for path in xml_paths]
         return parsed_articles
 
     def parse_pubmed_article(self, xml_path):
