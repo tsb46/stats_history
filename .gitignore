@@ -6,5 +6,9 @@ __pycache__/
 .ipynb_checkpoints/
 # Ignore data folder
 /data
+# Ignore results folder
+/results
 #Ignore test.py script
 test.py
+# Ignore extraction shell script
+extract.sh 

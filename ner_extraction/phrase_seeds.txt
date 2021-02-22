@@ -1,701 +1,1129 @@
-k-means clustering
-kmeans clustering
-kmeans algorithm
-k-means algorithm
-kmeans++
-kmediods clustering
-k-mediods clustering
-average linkage
-average-linkage
-complete linkage
-complete-linkage
-single linkage
-single-linkage
-hierarchical clustering
-hierarchical cluster analysis
-agglomerative clustering
-agglomerative hierarchical clustering
-dendrogram
-wards clustering
-wards method
-cluster analysis
-spectral clustering
-graph clustering
-hcs clustering
-markov clustering
-density-based clustering
-BIRCH
-DBSCAN
-OPTIC
-optic clustering
-mean-shift clustering
-mean-shift
-meanshift clustering
-kernel density estimation
-gaussian mixture model
-subspace clustering
-CLIQUE
-SUBCLU
-affinity propagation
-label propagation
-bi-clustering
-biclustering
-t-sne
-tsne
-fuzzy c-means
-fuzzy cmeans
-davies-bouldin index
-db index
-dunn index
-silhouette coefficient
-rand index
-f-measure
-f measure
-jaccard index
-dice index
-confusion matrix
-euclidean distance
-cosine distance
-correlation distance
-squared euclidean distance
-cityblock distance
-mahalanobis distance
-hellinger distance
-bhattacharyya distance
-braycurtis distance
-hamming distance
-dice distance
-jaccard distance
-support vector machine
-support vector regression
-support vector clustering
-support vector classification
-svm classification
-multiclass svm
-binary svm
-svm regression
-svm classification
-kernel trick
-linear svm
-kernel svm
-area under the curve
-auc
-receiver operating characteristic
-roc
-receiver operating characteristics
-logistic regression
-multivariate logistic regression
-multivariable logistic regression
-logit regression
-binomial logistic regression
-binomial regression
-binary logistic regression
-multinomial logistic regression
-multinomial regression
-odds ratio
-odds ratios
-ordinal logistic regression
-logit function
-logit-link function
-probit regression
-probit link function
-probit-link function
-linear discriminant analysis
-quadratic discriminant analysis
-discriminant analysis
-log-linear model
-poisson regression
-negative binomial regression
-generalized linear model
-survival analysis
-survival model
-cox proportional hazards regression
-cox proportional hazard regression
-cox proportional-hazards regression
-cox proportional hazards regressions
-cox proportional hazards model
-cox proportional hazard model
-cox proportional-hazards model
-cox proportional hazards models
-cox ph regression model
-proportional hazards model
-proportional hazards regression
-hazard regression model
-harrells concordance index
-hazard function
-hazard ratio
-cox regression
-log rank test
-log-rank test
-log rank analysis
-log-rank anlaysis
-kaplan-meier analysis
-kaplan-meier test
-k-nearest neighbors
-knearest neighbors
-k-nn regression
-k-nn classification
-knn regression
-knn classification
-neighbourhood components analysis
-neighborhood components analysis
-perceptron
-naive bayes
-decision trees
-decisiontree classifier
-decision tree classifier
-decision tree regression
-random forest
-randomforest 
-random forest classifier
-randomforest classifier
-adaboost classifier
-adaboost
-gaussian process
-gaussian process classifier
-gradient boosting
-gradient boosting classifier
-xgboost
-gradient tree boosting
-dummy code
-linear regression
-multivariate linear regression
-multivariable linear regression
-regression analysis
-regression analyses
-regression model
-regression models
-ridge regression
-ridge regularization
-lasso regression
-lasso regularization
-elastic net regression
-elastic net regularization
-r-squared
-r squared
-squared correlation
-multiple correlation
-multiple correlation coefficient
-squared multiple correlation
-squared multiple correlation coefficient
-stepwise selection
-forward selection
-multivariate regression
-multivariate multiple regression
-general linear model
-linear model
-nonlinear model
-nonlinear regression
-polynomial regression
-quadratic regression
-multivariate linear model
-meta-analysis
-meta analysis
-meta analyses
-meta-analyses
-meta-regression analysis
-meta regression analysis
-funnel plot
-eggers regression test
-eggers test
-multi-level model
-multilevel model
-multilevel models
-multilevel analysis
-multilevel regression
-multi-level regression
-mixed-effects model
-mixed effects models
-mixed effect model
-mixed effect model
-mixed linear model
-mixed linear models
-linear mixed model
-fixed effect model
-fixed effects model
-fixed-effects model
-fixed effects models
-random effect model
-random effects model
-random effects models
-random-effects model
-random effects regression
-random intercept model
-random slope model
-hierarchical linear model
-hierarchical regression
-hierarchical linear regression
-intraclass correlation coefficient
-intraclass correlation
-intracluster correlation coefficient
-intracluster correlation
-ANOVA 
-one-way analysis of variance
-analysis of variance
-multivariate analysis of variance
-MANOVA
-repeated measures multivariate analysis of variance
-repeated measures MANOVA
-wald test
-walds test
-repeated measures ANOVA
-repeated measures analysis of variance
-factorial ANOVA
-canonical correlation analysis
-canonical variate
-canonical correlation
-partial least squares
-partial least squares analysis
-analysis of covariance
-ANCOVA
-t-test
-t test
-t-tests
-t tests
-z-test
-z test
-z-tests
-z tests
-independent t-test
-independent samples t-test
-independent samples t test
-independent t test
-two-sample t test
-two sample t test
-paired t-test
-paired t test
-paired t-tests
-students t-test
-students t-tests
-sutdents t test
-tukeys post hoc test
-tukeys lsd
-tukeys least significant difference
-least significant difference
-tukeys post-hoc test
-hotellings t
-hotelling t
-hotellings t2
-hotelling t2
-f-test
-f test
-ftest
-f-statistic
-f statistic
-binomial test
-shapiro-wilk test
-kruskal-wallis one-way analysis of variance
-kruskal-wallis test
-kruskal-wallis analysis of variance
-kruskal-wallis ANOVA
-mann-whitney U
-wilcoxon-mann-whitney test
-fishers exact test
-fisher exact test
-mcnemar test
-kendalls tau
-kendalls w
-kendall rank correlation
-kolmogorov-smirnov test
-kolmogorovsmirnov test
-wilcoxon signed-rank test
-wilcoxon signed rank test
-wilcoxon rank-sum test
-wilcoxon rank sum test
-median test
-spearmans rank correlation
-spearmans correlation
-spearman correlation
-spearman rank correlation
-χ2 test
-χ2 tests
-chi-square test
-chi-square tests
-chi-square analysis
-chi-square statistics
-chi-square statistic
-chi square test
-chi square tests
-chi square analysis
-chi-square goodness of fit
-chi square goodness of fit
-pearson chi-square
-pearson chi square
-correlation
-correlation coefficient
-pearson coefficient
-pearsons correlation
-pearsons r
-pearson correlation
-pearsons product moment correlation
-pearsons product-moment correlation
-partial correlation
-semipartial correlation
-semi-partial correlation
-tetrachoric correlation
-polychoric correlation
-phi coefficient
-phi-coefficient
-confidence interval
+2 by 2 contingency table
+2 by n contingency table
+2 step fagan nomogram
+50% confidence interval
+90% confidence interval
 95% CI
 95% confidence interval
-95%-confidence interval
+95% credible interval
 95%-CI
-confidence intervals
-mean
-means
-median
-medians
-mode
-modes
-variance
-variances
-skewness
-kurtosis
-standard deviation
-standard deviations
-mean squared error
-mean squared errors
-standard error
-standard errors
-robust standard error
-Huber-White standard error
-sandwich variance
-statistical significance
-statistically significant
-significance level
-null hypothesis
-null distribution
-alternative hypothesis
-p-value
-p value
-p values
-p-values
-statistical power
-power calculation
-family-wise error
-family wise error
-multiple comparison problem
-multiple comparison correction
-cohens d
-effect size
-effect sizes
-type I error
-type II error
-bonferroni correction
-bonferroni post-hoc test
-bonferroni post hoc test
-bonferroni procedure
-benjamini-hochberg procedure
-benjamini-hochberg correction
-false discovery rate
-holm-bonferroni method
-bootstrapping
-bootstrap
-permutation test
-jackknife
-monte carlo method
-monte carlo simulation
-quintile
-listwise deletion
-pairwise deletion
-regression imputation
-mean imputation
-multiple imputation
-bilinear interpolation
-linear interpolation
-cubic spline interpolation
-cubic spline
-polynomial interpolation
-nearest-neighbor interpolation
-regression imputation
-z-score
-z-scores
-z score
-z scores
-z-statistics
-z-statistic
-z statistics 
-z statistic
-maximum likelihood estimation
-maximum likelihood
-maximum likelihood method
-restricted maximum likelihood
-marginal maximum likelihood
-full information maximum likelihood
-log-likelihood
-log likelihood
-log-likelihood ratio
-likelihood ratio
-likelihood ratios
-log-likelihood function
-likelihood ratio test
-method of moments
-generalized method of moments
-generalized estimating equation
-ordinary least squares
-ordinary least squares estimation
-nonlinear least squares
-nonnegative least squares
-non-negative least squares
-weighted least squares
-weighted least squares estimation
-generalized least squares
-generalized least squares estimation
-log-link function
-log link function
-alternating least squares estimation
-gradient descent
-stochastic gradient descent
-expectation-maximization
-expectation maximization
-em algorithm
-newton algorithm
-simulated annealing
-genetic algorithm
-evolutionary algorithm
-cross-entropy method
-bayesian estimation
-bayes estimator
-bayes rule
-empirical bayes
-bayesian hierarchical analysis
-bayesian hierarchical modeling
-hierarchical bayesian model
-hierarchical bayesian analysis
-posterior distribution
-prior distribution
-credible interval
-credibility interval
-conjugate prior
-non-informative prior
-non informative prior
-improper prior
-maximum a posteriori estimation
+95%-confidence interval
+99% confidence interval
+99% credible interval
+ARIMA
+ARMA
+B&B
+BIRCH
+BLAST
+BnB
+CANDECOMP
+CLIQUE
+DAG
+DTW
+FastDTW
+SparseDTW
+DBSCAN
+EXACT
+FASTA
+huber-white standard error
+huber white standard error
+huber white error
+huber-white error
+LSTM
+MAFFT
+MALIGN
+MART
 MAP estimation
 MCMC
-markov chain monte carlo
-metropolis hastings algorithm
-metropolis-hastings algorithm
-gibbs sampling
-normal distribution
-gaussian distribution
-poisson distribution
-gamma distribution
-binomial distribution
-multinomial distribution
-exponential distribution
-uniform distribution
+MDMR
+MUSCLE
+OPTIC
+PARAFAC
+PLS-DA
+PLSDA
+phylowgs
+robinson-foulds
+robinson foulds
+SIMCA
+SUBCLU
+UPGMA
+WPGMA
+adaboost
+adaboost classifier
+adjacency matrix
+affinity propagation
+agglomerative clustering
+agglomerative hierarchical clustering
+aho corasick algorithm
+aho-corasick algorithm
+akaike information criterion
+alpha distribution
+alternating least squares estimation
+alternative hypothesis
+altman box and whisker plot
+analysis of covariance
+analysis of similarity
+analysis of variance
+ancova
+anderson darling test
+anderson-darling test
+anova
+ante-dependence covariance structure
+archetypal analysis
+archetype analysis
+area under curve
+area under the curve
+artifical neural network
+assortativity
+auc
+auto-encoder
+autocorrelation
+autoencoder
+autoregressive integrated moving average
+autoregressive models
+autoregressive moving average
+average linkage
+average linkage hierarchical clustering
+average path length
+average-linkage
+baeza yates gonnet algorithm
+baeza-yates-gonnet algorithm
+band-pass filter
+banded heterogeneous toeplitz covariance structure
+banded toeplitz covariance structure
+bandpass filter
+bar chart
+bar graph
+barlett's test
+barletts test
+barlett’s test
+barnard's test
+basic local alignment search tool
+baum welch
+baum welch algorithm
+baum-welch
+baum-welch algorithm
+bayes a
+bayes b
+bayes c pi
+bayes estimator
+bayes factor
+bayes r
+bayes rule
+bayesian belief network
+bayesian estimation
+bayesian hierarchical analysis
+bayesian hierarchical modeling
+bayesian information criterion
+bayesian least absolute shrinkage and selection operator
+bayesian model
+bayesian model selection
+bayesian network
+bayesian networks
+bean plot
+belief network
+benjamini and hochberg false discovery rate
+benjamini and yekutieli false discovery rate correction method
+benjamini-hochberg correction
+benjamini-hochberg procedure
 bernoulli distribution
+best linear unbiased estimator
+best linear unbiased predictor
+beta binomial model
+beta binomial regression
 beta distribution
-von mises-fisher distribution
-von mises fisher distribution
-von mises distribution
-chi-squared distribution
+beta-binomial model
+beta-binomial regression
+betweenness centrality
+bhattacharyya distance
+bi-clustering
+biclique
+biclustering
+bilinear interpolation
+binary logistic regression
+binary svm
+binomial distribution
+binomial logistic regression
+binomial regression
+binomial test
+bipartite graph
+biplot
+bitap algorithm
+bland-altman analysis
+bland-altman approach
+bland-altman plot
+boltzmann machine
+bonferroni correction
+bonferroni post hoc test
+bonferroni post-hoc test
+bonferroni procedure
+bonferroni
+boosted regression tree
+bootstrap
+bootstrapping
+box and whisker plot
+box plot
+boyer moore algorithm
+boyer-moore algorithm
+boyer-moore string-search algorithm
+branch and bound
+braycurtis distance
+breslow-day test
+breusch-pagan test
+brewer sampling
+brown forsythe test
+canonical correlation
+canonical correlation analysis
+canonical polyadic decomposition
+canonical variate
+chain-referral sampling
+chi square analysis
+chi square goodness of fit
+chi square test
+chi square tests
+chi-square analysis
 chi-square distribution
-χ2 distribution
-f distribution
-f-distribution
-principal components analysis
-principal component analysis
-principal component analyses
-principal components analyses
-eigenvalue
-eigenvector
-empirical orthogonal function
-factor analysis
-principal axis factoring
-parallel analysis
-exploratory factor analysis
-exploratory factor analytic
-multidimensional scaling
-multi-dimensional scaling
-orthogonal rotation
-varimax rotation
-oblique rotation
-promax rotation
-geomin rotation
-sparse principal components analysis
-non-negative matrix factorization
-nonnegative matrix factorization
-probabilistic matrix factorization
-probabilistic principal components analysis
-independent component analysis
-latent dirichlet allocation
-singular value decomposition
+chi-square goodness of fit
+chi-square probability distribution
+chi-square statistic
+chi-square statistics
+chi-square test
+chi-square tests
+chi-squared distribution
+chi-squared statistic
 cholesky decomposition
+cityblock distance
+cleveland dot plot
+clustal omega
+clustalw
+cluster analysis
+clustering coefficient
+cochran's q statistic
+cochran's q test for heterogeneity
+cochran-armitage test
+cochran-mantel-haenzel test
+coefficient of determination
+coefficient of variation
+cohens d
+commentz walter algorithm
+commentz-walter algorithm
+community detection
+complete linkage
+complete linkage hierarchical clustering
+complete randomization
+complete-linkage
+compound symmetry covariance structure
+conditional entropy
+conditional logistic regression
+conditional mutual information
+confidence interval
+confidence intervals
+confirmatory factor analysis
+confusion matrix
+conjugate prior
+conover-iman test
+content analysis
+contingency table
+continuous multivariate probability distribution
+continuous probability distribution
+contrafold
 convex hull analysis
 convex-hull anlaysis
-archetype analysis
-archetypal analysis
-kernel pca
-dictionary learning
-sparse dictionary learning
-tensor decomposition
-isomap
-locally linear embedding
-spectral embedding
+convolutional neural networks 
+corrected akaike information criterion
+correlation
+correlation coefficient
+correlation distance
 correspondence analysis
-multicorrespondence analysis
-multi-correspondence analysis
-dissimilarity profile analysis
-redundancy analysis
-principal coordinates analysis
-analysis of similarity
-procrustes analysis
-mantel test
-distance-based redundancy analysis
-multivariate distance matrix regression
-MDMR
-tensor decomposition
-tensor rank decomposition
-tucker decomposition
-canonical polyadic decomposition
-PARAFAC
-CANDECOMP
-structural equation modeling
-structural equation model
-structural equation models
-exploratory structural equation model
-exploratory structural equation modeling
-path analysis
-structured regression model
-structured regression analysis
-structured regression
-mediation analysis
-moderated regression analysis
-moderation analysis
-confirmatory factor analysis
-goodness-of-fit
-goodness-of-fit indices
-cronbachs alpha
+cosine distance
+covariance
+covariance matrix
+covariance structure
+cox ph regression model
+cox proportional hazard model
+cox proportional hazard regression
+cox proportional hazards model
+cox proportional hazards models
+cox proportional hazards regression
+cox proportional hazards regressions
+cox proportional-hazards model
+cox proportional-hazards regression
+cox regression
+credibility interval
+credible interval
 cronbach alpha
 cronbach α
+cronbachs alpha
 cronbachs α
-latent class analysis
-latent growth model
-growth curve model
-measurement invariance
-bayesian networks
-belief network
-dynamic bayesian network
-markov network
-markov logic network
-graphical model
-viterbi algorithm
-state space models
-kalman filter
-markov model
-hidden markov model
-directed acyclic graph
-DAG
-graph theory
-bipartite graph
-biclique
-social network analysis
-adjacency matrix
-similarity matrix
-distance matrix
-k-core decomposition
-assortativity
-small-world network
-small world network
-power law distributin
-powerlaw distribution
+cross-correlation
+cross-entropy method
+cubic spline
+cubic spline interpolation
+cumulative logit model
+cumulative logit regression
+damerau levenshtein distance
+damerau–levenshtein distance
+davies-bouldin index
+db index
+decision tree classifier
+decision tree regression
+decision trees
+decisiontree classifier
+deep belief nets
+deep belief networks
+deep boltzmann machine 
 degree centrality
-betweenness centrality
+dendrogram
+density-based clustering
+dersimonian and leard method
+dersimonian-laird estimator
+detrended fluctuation analysis
+deviance information criterion
+dice distance
+dice index
+dictionary learning
+dijkstra's algorithm 
+dijkstras algorithm 
+directed acyclic graph
+discourse analysis
+discrete multivariate probability distribution
+discriminant analysis
+dissimilarity profile analysis
+distance matrix
+distance-based redundancy analysis
+divisive hierarchical clustering
+dixon q test
+dose response curve
+dot plot
+dummy code
+dunn index
+dunn’s multiple comparison test
+dunns multiple comparison test
+dynamic bayesian network
+dynamic causal model
+dynamic time warping
+edit distance
+effect size
+effect size estimate
+effect sizes
+eggers regression test
+eggers test
+eigenvalue
+eigenvector
 eigenvector centrality
-pagerank
-community detection
+elastic net regression
+elastic net regularization
+em algorithm
+empirical bayes
+empirical mode decomposition
+empirical orthogonal function
+ensemble empirical mode decomposition
+eta-squared
+euclidean distance
+evolutionary algorithm
+exact binomial test
+expectation maximization
+expectation-maximization
+exploratory factor analysis
+exploratory factor analytic
+exploratory structural equation model
+exploratory structural equation modeling
+exponential distribution
+exponential smoothing
+f distribution
+f measure
+f statistic
+f test
+f-distribution
+f-measure
+f-statistic
+f-test
+factor analysis
+factorial anova
+fagan nomogram
+false discovery rate
+false discovery rate correction method
+false negative rate
+false positive rate
+family wise error
+family wise error rate correction method
+family-wise error
+fast fourier transform
+fast ica
+fastica
+feasible generalized least squares
+first order autoregressive covariance structure
+first order autoregressive moving average covariance structure
+fisher exact test
+fisher's exact test
+fishers exact test
+fitch margoliash method
+fitch-margoliash method
+fixed effect model
+fixed effects model
+fixed effects models
+fixed-effects model
+floyds algorithm
+floyd–warshall algorithm
+floyd’s algorithm
+forest plot
+forward selection
+fourier analysis
+fourier transform
+framework analysis
+ftest
+full information maximum likelihood
+funnel chart
+funnel plot
+fuzzy c-means
+fuzzy cmeans
+fwer adjusted p-value
+g matrix
+galbraith plot
+gamma distribution
+gaussian distribution
+gaussian mixture model
+gaussian process
+gaussian process classifier
+gaussian process regression
+geary's c
+gearys c
+geary's contiguity ratio
+gearys contiguity ratio
+geary's ratio
+gearys ratio
+general linear model
+generalized estimating equation
+generalized extreme studentized deviate test
+generalized least squares
+generalized least squares estimation
+generalized linear model
+generalized method of moments
+generative adversarial networks
+genetic algorithm
+geometric distribution
+geometric mean
+geomin rotation
+gestalt pattern matching
+gibbs sampling
 girvan-newman algorithm
+glass's delta
+global efficiency
+global morans i
+global moran's i
+goodness of fit hypothesis
+goodness-of-fit
+goodness-of-fit indices
+gradient boosted regression tree
+gradient boosting
+gradient boosting classifier
+gradient descent
+gradient tree boosting
+granger causality
+graph clustering
+graph theory
+graphical model
+grounded theory
+grouped bar chart
+growth curve model
+grubbs' test
+hamming distance
+hardy-weinberg equilibrium hypothesis
+hardy-weinberg equilibrium testing
+harmonic mean
+harrells concordance index
+hartung-knapp-sidik-jonkman
+haybittle-peto boundary analysis
+hazard function
+hazard ratio
+hazard regression model
+hcs clustering
+hedges's g
+hellinger distance
+helmert contrast
+heterogeneous compound symmetry covariance structure
+heterogeneous first-order autoregressive covariance structure
+heterogeneous toeplitz covariance structure
+hidden markov model
+hierarchical bayesian analysis
+hierarchical bayesian model
+hierarchical cluster analysis
+hierarchical clustering
+hierarchical linear model
+hierarchical linear regression
+hierarchical regression
+high-pass filter
+highpass filter
+hilbert huang transform
+hilbert transform
+hilbert-huang transform
+hirschberg's algorithm
+hirschbergs algorithm
+histogram
+histogram distribution
+holm false discovery rate correction
+holm-bonferroni family-wise error rate correction
+holm-bonferroni method
+hommel false discovery rate correction
+homogeneity test objective
+homoskedasticity test
+hotelling t
+hotelling t2
+hotelling t2 distribution
+hotelling-lawley trace test
+hotellings t
+hotellings t2
+hunt szymanski algorithm
+hunter-schmidt estimator
+hunter-schmidt method
+hunt–szymanski algorithm
+huynh-feldt covariance structure
+hypergeometric distribution
+hypergeometric test
+i-squared
+improper prior
+improved kernel pls
+independent component analysis
+independent samples t test
+independent samples t-test
+independent t test
+independent t-test
+indicator kriging
+infomax
+infomax ica
+information entropy
+inter quartile range
+interquartile mean
+intraclass correlation
+intraclass correlation coefficient
+intracluster correlation
+intracluster correlation coefficient
+isomap
+iteratively reweighted least squares estimation
+jaccard distance
+jaccard index
+jackknife
+jaro distance
+jaro-winkler distance
+joint entropy
+k median clustering
+k-core decomposition
+k-means algorithm
+k-means clustering
+k-median clustering
+k-medians clustering
+k-mediods clustering
+k-nearest neighbors
+k-nearest neighbour data imputation
+k-nn classification
+k-nn regression
+kabsch algorithm
+kalign
+kalman filter
+kaplan-meier analysis
+kaplan-meier test
+kendall rank correlation
+kendall's correlation coefficient
+kendalls tau
+kendalls w
+kenward-roger degree of freedom approximation
+kernel density estimation
+kernel mixture distribution
+kernel pca
+kernel svm
+kernel trick
+kl divergence
+kmeans algorithm
+kmeans clustering
+kmeans++
+kmedian clustering
+kmediods clustering
+knearest neighbors
+knn classification
+knn regression
+kolmogorov-smirnov test
+kolmogorovsmirnov test
+kriging
+kruskal wallis test
+kruskal-wallis anova
+kruskal-wallis analysis of variance
+kruskal-wallis one-way analysis of variance
+kruskal-wallis test
+kullback leibler divergence
+kullback-leibler divergence
+kurtosis
+l'abbe plot
+label propagation
+laplace probability distribution
+lasso regression
+lasso regularization
+last observation carried forward data imputation
+latent class analysis
+latent class model
+latent dirichlet allocation
+latent growth model
+ld plot
+least absolute shrinkage and selection operator
+least angle regression
+least significance different test
+least significant difference
+least-angle regression
+lee distance
+levene's test
+levenshtein distance
+likelihood ratio
+likelihood ratio test
+likelihood ratios
+likelihood-ratio test
+line graph
+linear discriminant analysis
+linear interpolation
+linear mixed model
+linear model
+linear regression
+linear svm
+lineweaver-burk plot
+listwise deletion
+local efficiency
+locally estimated scatterplot smoothing
+locally linear embedding
+loess
+log likelihood
+log link function
+log normal distribution
+log rank analysis
+log rank test
+log-likelihood
+log-likelihood function
+log-likelihood ratio
+log-linear model
+log-link function
+log-rank anlaysis
+log-rank test
+logarithmic transformation
+logic regression
+logistic regression
+logit function
+logit regression
+logit-link function
+loglinear model
+long short-term memory
+long short-term memory network
+louvain algorithm
+louvain method
+low-pass filter
+lowpass filter
+m matrix
+ma plot
+maf matrix
+mahalanobis distance
+mallows' cp
+manhattan plot
+manova
+mann-whitney u
+mann whitney u
+mann-whitney u-test
+mantel test
+marginal maximum likelihood
+markov chain monte carlo
+markov clustering
+markov logic network
+markov model
+markov network
+matern function anisotropic covariance structure
+matthews correlation coefficient
+mauchly's test
+maximum a posteriori estimation
+maximum likelihood
+maximum likelihood estimation
+maximum likelihood method
+maximum parsimony
+mcnemar test
+mean
+mean data imputation
+mean imputation
+mean squared error
+mean squared errors
+mean-shift
+mean-shift clustering
+meanshift clustering
+measurement invariance
+median
+median graph
+median test
+mediation analysis
+meta analyses
+meta analysis
+meta regression analysis
+meta-analyses
+meta-analysis
+meta-regression analysis
+method of moments
+metropolis hastings algorithm
+metropolis-hastings algorithm
+metropolis–hastings sampling
+minimax sampling
 minimum-cut method
+mixed effect model
+mixed effects models
+mixed linear model
+mixed linear models
+mixed-effects model
+mixture distribution
+mode
+moderated regression analysis
+moderation analysis
+modes
 modularity
 modularity maximization
 modularity-maximization
-infomax
-louvain algorithm
-louvain method
-clustering coefficient
-average path length
-global efficiency
-local efficiency
-stochastic block models
-autocorrelation
-autoregressive models
+monte carlo method
+monte carlo simulation
+moran's i
+morans i
+mosaic chart
+mosaic plot
 moving average
-autoregressive moving average
-ARMA
-autoregressive integrated moving average
-ARIMA
-vector autoregression
-exponential smoothing
-granger causality
-dynamic causal model
-fourier transform
-fast fourier transform
-fourier analysis
-spectral analysis
-spectral analyses
-bandpass filter
-band-pass filter
-low-pass filter
-lowpass filter
-high-pass filter
-highpass filter
-wavelet transform
-wavelet analysis
-dynamic time warping
-detrended fluctuation analysis
-cross-correlation
-empirical mode decomposition
-ensemble empirical mode decomposition
-hilbert-huang transform
-hilbert huang transform
-hilbert transform
-singular spectrum analysis
+multi-correspondence analysis
+multi-dimensional scaling
+multi-level model
+multi-level regression
+multiclass svm
+multicorrespondence analysis
+multidimensional scaling
+multilevel analysis
+multilevel model
+multilevel models
+multilevel regression
+multinomial distribution
+multinomial logistic regression
+multinomial naive bayes
+multinomial probit regression
+multinomial regression
+multiple additive regression trees
+multiple comparison correction
+multiple comparison problem
+multiple correlation
+multiple correlation coefficient
+multiple imputation
+multiple testing correction method
+multivariable linear regression
+multivariable logistic regression
+multivariate adaptive regression splines
+multivariate analysis of variance
+multivariate distance matrix regression
+multivariate imputation with chained equations
+multivariate linear model
+multivariate linear regression
+multivariate logistic regression
+multivariate multiple regression
+multivariate regression
 multivariate singular spectrum analysis
+multiway anova
+multiway contingency table
+mutual information
+naive bayes
+narrative analysis
+nearest-neighbor interpolation
+nearest neighbor interpolation
+nearest neighbor gaussian processes
+nearest-neighbor gaussian processes
+needleman-wunsch algorithm
+needleman wunsch algorithm
+needleman-wunsch
+negative binomial regression
+neighbor joining
+neighbor-joining
+neighborhood components analysis
+neighbourhood components analysis
+neural network
+newman-keuls test
+newton algorithm
+non informative prior
+non-informative prior
+non-iterative partial least squares
+non-negative least squares
+non-negative matrix factorization
+nonlinear least squares
+nonlinear model
+nonlinear regression
+nonnegative least squares
+nonnegative matrix factorization
+normal distribution
+normalized pointwise mutual information
+null distribution
+null hypothesis
+nussinov algorithm
+o'brien-flemming boundary
+obrien-flemming boundary
+o'brien flemming boundary
+obrien flemming boundary
+oblique rotation
+odds ratio
+odds ratio homogeneity test
+odds ratios
+omega-squared
+one sample hotelling t2 test
+one sample t-test
+one-way analysis of variance
+one-way anova
+optic clustering
+ordered probit regression
+ordinal logistic regression
+ordinary kriging
+ordinary least squares
+ordinary least squares estimation
+orthogonal rotation
+p matrix
+p value
+p values
+p-value
+p-values
+pagerank
+paired t test
+paired t-test
+paired t-tests
+pairwise deletion
+parallel analysis
+pareto type-i probability distribution
+pareto type-ii probability distribution
+pareto type-iii probability distribution
+pareto type-iv probability distribution
+partial correlation
+partial least square discriminant analysis
+partial least square regression
+partial least squares
+partial least squares analysis
+partial least squares discriminant analysis
+path analysis
+pearson chi square
+pearson chi-square
+pearson coefficient
+pearson correlation
+pearson's chi square test of goodness of fit
+pearson's chi square test of independence between categorical variables
+pearson's correlation coefficient
+pearsons correlation
+pearsons product moment correlation
+pearsons product-moment correlation
+pearsons r
+pedigree chart
+percentile
+perceptron
+permutation test
+phi coefficient
+phi-coefficient
+pie chart
+pie charts
+pillai's trace test
+pls1
+pls2
+pocock boundary
+point mutual information
+pointwise mutual information
+poisson distribution
+poisson regression
+polychoric correlation
+polychoric correlation coefficient
+polynomial contrast
+polynomial interpolation
+polynomial regression
+positive likelihood ratio
+posterior distribution
+posterior probability distribution
+power calculation
+power law distributin
+power law distribution
+powerlaw distribution
+principal axis factoring
+principal component analyses
+principal component analysis
+principal component regression
+principal components analyses
+principal components analysis
+principal coordinates analysis
+prior distribution
+prior probability distribution
+probabilistic matrix factorization
+probabilistic principal components analysis
+probability distribution shape parameter
+probability-proportional-to-size sampling
+probalign
+probcons
+probit link function
+probit regression
+probit-link function
+procrustes analysis
+promax rotation
+proportional hazards model
+proportional hazards regression
+q-q plot
+q-value
+quadratic discriminant analysis
+quadratic mean
+quadratic regression
+quartile
+quasi median network
+quasi-median network
+quintile
+r squared
+r-squared
+rand index
+random effect model
+random effects model
+random effects models
+random effects regression
+random forest
+random forest classifier
+random forest procedure
+random intercept model
+random slope model
+random-effects model
+randomforest 
+randomforest classifier
+rao's score test
+rarefaction curve
+rational quadratic anisotropic covariance structure
+real time quantitative pcr plot
+receiver operating characteristic
+receiver operating characteristics
+receiver operational characteristics curve
 recurrence plot
 recurrence quantification analysis
-neural network
-artifical neural network
-autoencoder
-deep belief nets
-deep belief networks
-generative adversarial networks
-convolutional neural networks 
 recurrent neural networks
-long short-term memory
-long short-term memory network
-LSTM
-self-organizing map
-content analysis
-narrative analysis
-thematic analysis
-discourse analysis
-framework analysis
-grounded theory
-kriging
-ordinary kriging
-simple kriging
-universal kriging
-indicator kriging
-gaussian process regression
-smoothing spline
-wiener-kolmogorov prediction
-mutual information
-information entropy
-joint entropy
-conditional entropy
-kullback-leibler divergence
-kullback leibler divergence
-kl divergence
+redundancy analysis
+regression analyses
+regression analysis
+regression data imputation
+regression imputation
+regression model
+regression models
+regression splines
 renyi entropy
-conditional mutual information
-pointwise mutual information
-point mutual information
-normalized pointwise mutual information
-logic regression
-bland-altman plot
-bland-altman analysis
-bland-altman approach
-
+repeated measure anova
+repeated measures manova
+repeated measures analysis of variance
+repeated measures multivariate analysis of variance
+reproducing kernel hilbert space
+restricted maximum likelihood
+restricted maximum likelihood estimation
+restricted randomization
+rf distance
+ridge regression
+ridge regression best linear unbiased predictor
+ridge regularization
+robust standard error
+roc
+root mean square distance
+roy-warshall algorithm
+roy’s maximum root test
+rt-pcr standard curve
+sammon mapping
+sandwich variance
+sankoff morel cedergren
+sankoff-morel-cedergren
+sankoff-morel-cedergren algorithm
+satterthwaite degree of freedom
+scaled identity covariance structure
+scaled t distribution
+scatter plot
+scatterplot matrix
+scheffe test
+scree plot
+selectivity ratio
+self-organizing map
+semi-partial correlation
+semipartial correlation
+sequence read
+shapiro-wilk test
+sidik-jonkman estimator
+significance level
+silhouette coefficient
+similarity matrix
+simple kriging
+simpls
+simulated annealing
+single linkage
+single linkage hierarchical clustering
+single-linkage
+singular spectrum analysis
+singular value decomposition
+skewness
+small world network
+small-world network
+smith waterman algorithm
+smith-waterman algorithm
+smooth kernel distribution
+smoothing spline
+social network analysis
+soft independent modeling of class analogies
+sparse dictionary learning
+sparse principal components analysis
+spatial exponential anisotropic covariance structure
+spatial exponential geometric anisotropic covariance structure
+spatial gaussian geometric anisotropic covariance structure
+spatial linear geometric anisotropic covariance structure
+spatial spherical geometric anisotropic covariance structure
+spatial stratified heterogeneity
+spear box and whisker plot
+spearman correlation
+spearman rank correlation
+spearman's rank correlation coefficient
+spearmans correlation
+spearmans rank correlation
+spectral analyses
+spectral analysis
+spectral clustering
+spectral embedding
+sphericity hypothesis
+sphericity test
+split split plot design
+split-plot design
+squared correlation
+squared euclidean distance
+squared multiple correlation
+squared multiple correlation coefficient
+stacked bar chart
+standard deviation
+standard deviations
+standard error
+standard error of estimate
+standard error of the mean
+standard errors
+standard normal distribution
+standardized mean difference
+state space model
+state space models
+statistical inference
+statistical power
+statistical significance
+statistically significant
+stepwise regression
+stepwise selection
+stochastic block models
+stochastic gradient descent
+structural equation model
+structural equation modeling
+structural equation models
+structured regression
+structured regression analysis
+structured regression model
+student t test
+student's t distribution
+student's t-test
+studentized range distribution
+students t-test
+students t-tests
+student’s t test
+subspace clustering
+sum contrast
+support vector classification
+support vector clustering
+support vector machine
+support vector regression
+survival analysis
+survival curve
+survival distribution
+survival model
+survival rate
+svm classification
+svm regression
+symmetric difference metric
+symmetric distribution
+t test
+t tests
+t-coffee
+t-sne
+t-statistic
+t-test
+t-tests
+tarone's test
+tau squared
+tensor decomposition
+tensor rank decomposition
+tetrachoric correlation
+tetrachoric correlation coefficient
+thematic analysis
+tietjen-moore test
+time series design
+toeplitz covariance structure
+treatment contrast
+trimmed mean
+true positive rate
+tsne
+tucker decomposition
+tukey hsd
+tukeys least significant difference
+tukeys lsd
+tukeys post hoc test
+tukeys post-hoc test
+two sample hotelling t2 test
+two sample t test
+two sample t-test with equal variance
+two sample t-test with unequal variance
+two way contingency table
+two-sample t test
+two-way anova
+two-way contingency table
+type i error
+type ii error
+uniform distribution
+universal kriging
+unstructured covariance structure
+variance
+variance component estimate
+variances
+varimax rotation
+vector autoregression
+venn diagram
+violin plot
+viterbi algorithm
+volcano plot
+von mises distribution
+von mises fisher distribution
+von mises-fisher distribution
+wagner fischer algorithm
+wagner–fischer algorithm
+wald statistic
+wald test
+walds test
+wards clustering
+wards method
+wavelet analysis
+wavelet transform
+weibull probability distribution
+weighted arithmetic mean
+weighted least squares
+weighted least squares estimation
+wiener-kolmogorov prediction
+wilcoxon rank sum test
+wilcoxon rank-sum test
+wilcoxon signed rank test
+wilcoxon signed-rank test
+wilcoxon-mann-whitney test
+wilk's lambda distribution
+wilk's lambda test
+wilkinson dot plot
+woolf's test
+woolf test
+xgboost
+yate's corrected chi-squared test
+yuen t-test
+z curve
+z matrix
+z score
+z scores
+z statistic
+z statistics 
+z test
+z tests
+z-curve
+z-score
+z-scores
+z-statistic
+z-statistics
+z-test
+z-tests
+χ2 distribution
+χ2 test
+χ2 tests

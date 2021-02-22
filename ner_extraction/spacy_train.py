@@ -53,7 +53,7 @@ def trim_entity_spans(data):
 
 def run_main(input_pickle, output_dir):
     training_dict = pickle.load(open(input_pickle, 'rb'))
-    training_data = training_dict
+    training_data = training_dict['training_samples']
     training_data_no_overlap = [sample for sample in
                                 list(map(detect_ent_overlap, training_data))
                                 if sample is not None]
@@ -107,7 +107,7 @@ if __name__ == '__main__':
     """Train a SpaCy NER model on the supplied training examples"""
     parser = argparse.ArgumentParser(description='Run SpaCy NER model training on'
                                                  'supplied examples')
-    parser.add_argument('-p', '--pickle_input',
+    parser.add_argument('-i', '--pickle_input',
                         help='<Required> Path to .pickle file containing'
                              'training examples (formatted for SpaCy input)',
                         required=True,
@@ -115,7 +115,8 @@ if __name__ == '__main__':
     parser.add_argument('-o', '--output_dir',
                         help='<Required> Path to directory '
                              'to write trained model to',
-                        required=True,
+                        required=False,
+                        default='data',
                         type=str)
 
     args_dict = vars(parser.parse_args())

@@ -1,89 +1,23 @@
 import argparse
 import json
-import os
-import pandas as pd
 import pickle
 
-from glob import glob
-# from sklearn.base import BaseEstimator, TransformerMixin
-
-#
-# class AbstractSelector(BaseEstimator, TransformerMixin):
-#     def __init__(self, field):
-#         self.field = field
-#
-#     def fit(self, X, y=None):
-#         return self
-#
-#     def transform(self, X):
-#         return X[self.field]
-#
-#
-# class JournalTitleSelector(BaseEstimator, TransformerMixin):
-#     def __init__(self, field):
-#         self.field = field
-#
-#     def fit(self, X, y=None):
-#         return self
-#
-#     def transform(self, X):
-#         return X[self.field]
-#
-#
-# class TitleSelector(BaseEstimator, TransformerMixin):
-#     def __init__(self, field):
-#         self.field = field
-#
-#     def fit(self, X, y=None):
-#         return self
-#
-#     def transform(self, X):
-#         return X[self.field]
+from trainer_utils import pull_xml_fps, parse_pubmed_article
 
 
-# def classify_article(article, metadata, nb_classifier):
-#     try:
-#         import pdb; pdb.set_trace()
-#         article_data = {
-#             'journal': metadata[article['pmid']]['journal'],
-#             'abstract': article['abstract'],
-#             'title': article['title']
-#         }
-#         article_series = pd.DataFrame(article_data, index=0)
-#         domain = nb_classifier.predict(article_series)
-#         return domain
-#     # If any crucial article info is missing, return None
-#     except KeyError:
-#         return None
-
-
-def pull_ents(file_path, ner_model, output_dir, article_metadict):
-    print(file_path)
-    ents_list = []
-    articles = json.load(open(file_path, 'r'))
-    for article in articles:
-        metadata = pull_metadata(article['pmid'], article_metadict)
-        if metadata is not None:
-            # domain = classify_article(article, article_metadict, classifier)
-            # if domain is not None:
-            try:
-                spacy_obj = ner_model(article['methods'])
-                ents = [str(ent) for ent in spacy_obj.ents]
-            except AttributeError:
-                ents = []
-            ents_dict = {
-                'title': article['title'],
-                'abstract': article['abstract'],
-                'pmid': article['pmid'],
-                'date': article['date'],
-                'journal': metadata['journal'],
-                'citations': metadata['citations'],
-                'ents': ents
-            }
-            ents_list.append(ents_dict)
-    file_out_ext = os.path.basename(file_path)
-    file_out = os.path.splitext(file_out_ext)[0]
-    pickle.dump(ents_list, open(output_dir + '/ents/' + file_out + '.pickle', 'wb'))
+def pull_ents(xml_fp, ner_model, section_keywords):
+    try:
+        xml_dict = parse_pubmed_article(xml_fp, section_keywords)
+    except TypeError:
+        return None
+    if xml_dict['parsed']:
+        try:
+            spacy_obj = ner_model(xml_dict['section_text'])
+            ents = [str(ent) for ent in spacy_obj.ents]
+        except AttributeError:
+            ents = []
+        xml_dict.update({'ents': ents})
+    return xml_dict
 
 
 def pull_metadata(pmid, article_metadict):
@@ -95,48 +29,69 @@ def pull_metadata(pmid, article_metadict):
         return None
 
 
-def run_main(input_dir, output_dir, spacy_model, article_metadict):
+def run_main(input_dir, output_dir, spacy_model, section_keyword_file, 
+             start_indx, end_indx, verbose=True):
     # Get paths to necessary inputs
-    corpus_files = glob(input_dir + '/preprocessed/*.json')
+    xml_fps = pull_xml_fps(input_dir)
     ner_model = pickle.load(open(spacy_model, 'rb'))
-    # nb_classifier = pickle.load(open(journal_classifier, 'rb'))
-    metadict = json.load(open(article_metadict, 'rb'))
-    # Extract entities from pubmed corpus files
-    for file_path in corpus_files:
-        pull_ents(file_path, ner_model, output_dir, metadict)
+    with open(section_keyword_file) as f:
+        section_keywords = f.read().splitlines()
+    # Remove potential empty lines and white space
+    section_keywords = [keyword.strip() for keyword in section_keywords if keyword != '']
+    if end_indx is None:
+        end_indx = len(xml_fps)
+    xml_fps_batch = xml_fps[start_indx:end_indx]
+    parsed_articles = []
+    for i, fp in enumerate(xml_fps_batch):
+        if verbose and i % 100 == 0:
+            print(f'# of parsed articles: {i}')
+        article_dict = pull_ents(fp, ner_model, section_keywords)
+        parsed_articles.append(article_dict)
+    pickle.dump(parsed_articles,
+                open(f'{output_dir}/article_ents_{start_indx}_{end_indx}.pickle', "wb"))
 
 
 if __name__ == '__main__':
     """Extract named entities from pubmed corpus"""
     parser = argparse.ArgumentParser(description='Extract named entities from '
                                                  'pubmed corpus files')
-    parser.add_argument('-d', '--corpus_dir',
+    parser.add_argument('-i', '--input_dir',
                         help='<Required> Path to directory containing '
-                             'pubmed corpus files',
+                             'pubmed xml files',
                         required=True,
                         type=str)
     parser.add_argument('-o', '--output_dir',
                         help='<Required> Path to directory '
                              'to write outputs (.pickle files) to',
-                        required=True,
+                        required=False,
+                        default='results',
                         type=str)
-    parser.add_argument('-s', '--spacy_ner_model',
+    parser.add_argument('-m', '--spacy_ner_model',
                         help='<Required> path to trained spacy ner '
                              'model .pickle file',
                         required=True,
                         type=str)
-    # parser.add_argument('-c', '--journal_classifier',
-    #                     help='<Required> path to trained nb classifier to '
-    #                          'categorize articles',
-    #                     required=True,
-    #                     type=str)
-    parser.add_argument('-a', '--article_metadict',
-                        help='<Required> path to article metadict for pulling'
-                             'relevant metainfo',
-                        required=True,
-                        type=str)
+    parser.add_argument('-k', '--section_keywords',
+                    help='Path to .txt file providing a set of keywords'
+                           'to guide selection of text in article xml. The .txt'
+                           'file should have each string on a separate line',
+                    required=True,
+                    type=str)
+    parser.add_argument('-s', '--start_indx',
+                        help='(Parsed articles are saved in batches) '
+                        'Starting indx of batch',
+                        default=0,
+                        type=int)
+    parser.add_argument('-e', '--end_indx',
+                        help='(Parsed articles are saved in batches) '
+                        'ending indx of batch - default: # of all pubmed articles',
+                        default=None,
+                        type=int)
 
     args_dict = vars(parser.parse_args())
-    run_main(args_dict['corpus_dir'], args_dict['output_dir'],
+    run_main(args_dict['input_dir'], args_dict['output_dir'],
              args_dict['spacy_ner_model'],
-             args_dict['article_metadict'])
+             args_dict['section_keywords'],
+             args_dict['start_indx'],
+             args_dict['end_indx']
+             )
