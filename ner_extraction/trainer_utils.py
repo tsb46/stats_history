@@ -21,6 +21,7 @@ def build_pubmed_dict(metadata, body, section_keywords):
         'parsed': True,
         'pmid': metadata['pmid'],
         'doi': metadata['doi'],
+        'pmcid': metadata['pmc'],
         'journal': metadata['journal'],
         'year': metadata['publication_year'],
         'date': metadata['publication_date'],
@@ -86,6 +87,7 @@ def parse_pubmed_article(xml_path, section_keywords):
         metadata = pp.parse_pubmed_xml(xml_path)
         return {
                 'pmid': metadata['pmid'],
+                'pmcid': metadata['pmc'],
                 'title': metadata['full_title'],
                 'journal': metadata['journal'],
                 'parsed': False
