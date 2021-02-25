@@ -20,15 +20,6 @@ def pull_ents(xml_fp, ner_model, section_keywords):
     return xml_dict
 
 
-def pull_metadata(pmid, article_metadict):
-    if pmid in article_metadict:
-        journal = article_metadict[pmid]['journal']
-        citation = article_metadict[pmid]['citations']
-        return {'journal': journal, 'citations': citation}
-    else:
-        return None
-
-
 def run_main(input_dir, output_dir, spacy_model, section_keyword_file, 
              start_indx, end_indx, verbose=True):
     # Get paths to necessary inputs
