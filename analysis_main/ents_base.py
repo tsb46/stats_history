@@ -1,76 +1,115 @@
 import pickle
 import pandas as pd
 import numpy as np
+import scipy.sparse as sp
 
-from analysis_main.preprocessing import EntityPreprocessing
+
 from glob import glob
 from collections import Counter
-from sklearn.decomposition import NMF, SparsePCA, DictionaryLearning
-from sklearn.preprocessing import normalize 
+from sklearn.decomposition import NMF
+from sklearn.preprocessing import normalize
 
+np.random.seed(0)
 
 class EntityBase:
-    def __init__(self, ents_dir, journal_classifier, ent_count_thres=10,
-                 ignore_article_counts=True, precomp_ent_group=None):
-        ent_files = glob(ents_dir + '/*.pickle')
-        self.ent_files = ent_files
-        if isinstance(journal_classifier, str):
-            self.classification_type = 'alg'
-        elif isinstance(journal_classifier, dict):
-            self.classification_type = 'precomputed'
+    def __init__(self, ents_fp, ent_grouper=None, year_range=None, 
+                 ignore_article_counts=True):
+        self.ent_file = ents_fp
+        if ent_grouper is not None:
+          self.group_ents = True
         else:
-            raise Exception('classifier input must be path to spacy classifier '
-                            'model or dict containing pre-computed classifications')
-        self.classifier = journal_classifier
-        self.ent_count_thres = ent_count_thres
+          self.group_ents = False
+        self.ent_grouper = ent_grouper
         self.ignore_article_counts = ignore_article_counts
-        self.precomp_ent_group = precomp_ent_group
-            
+        if year_range is not None:
+          self.year_range = year_range
+        else:
+          self.year_range = (float('-inf'), float('inf'))
+    
     def convert_to_dataframe(self, additional_cols=None):
         """
-        Convert word count matrix to dataframe for further processing, index is set as pmid
+        Convert word count matrix to dataframe for further processing, index is set as pmcid
         :param additional_cols: a list containing strings referring to additional article info.
          These are included included as extra columns in the dataframe. Options include: 'date',
          'journal', 'title', 'citations' and/or 'domain'.
         :return: word count dataframe
         """
-        id2voc = {indx: ent for ent, indx in
-                  self.ents['word_count_matrix']['voc2id'].items()}
+        article_dict = self._pull_ents(self.ent_file)
+        if self.group_ents:
+          ent_grouper = self._create_ent_grouper(self.ent_grouper)
+          self.ent_group = ent_grouper
+        else:
+          ent_grouper = None
+        word_count_mat, voc2id, pmcid_all = self._compute_word_count_mat(article_dict, ent_grouper, 
+                                                                         self.year_range)
+        id2voc = {indx: ent for ent, indx in voc2id.items()}
+        self.voc2id = voc2id
+        self.id2voc = id2voc
         word_count_df = pd.DataFrame(
-            self.ents['word_count_matrix']['matrix'].todense(),
-            index=self.ents['word_count_matrix']['pmid2id'],
+            word_count_mat.todense(),
+            index=pmcid_all,
             columns=[id2voc[indx] for indx in range(len(id2voc))]
         )
-        # If the user specified extra columns of article info be added
+        # If the user specified extra columns of article info to be added
         if additional_cols is not None:
-            additional_data = {pmid: {col: self.ents['ents'][pmid][col] 
-                                      for col in additional_cols} 
-                              for pmid in self.ents['ents']}
+            additional_data = {pmcid: {col: article_dict[pmcid][col] for col in additional_cols} 
+                               for pmcid in pmcid_all}
             additional_data_df = pd.DataFrame.from_dict(additional_data, 
                                                         orient='index')
-            additional_data_df = additional_data_df.reindex(word_count_df.index)
-            return word_count_df, additional_data_df
+            if 'year' in additional_cols:
+              additional_data_df['year'] = additional_data_df['year'].astype(int)
+            # additional_data_df = additional_data_df.reindex(word_count_df.index)
+        else:
 
-        return word_count_df
-    
-    def ent_counts_per_article(self):
-        ents_len = [len(entry['ents']) for entry in self.article_dicts]
-        ents_len_counter = Counter(ents_len)
-        return ents_len_counter
-    
-    def process_ents(self):
-        article_dicts = self._pull_ents()
-        # convert list of pubmed dicts to dictionary indexed by pmid
-        article_dicts = {article['pmid']: article for article in article_dicts}
-        ents_preprocess = EntityPreprocessing(self.classifier, self.classification_type,
-                                              self.ent_count_thres,
-                                              self.ignore_article_counts, 
-                                              self.precomp_ent_group)
-        self.ents = ents_preprocess.preprocess(article_dicts)
-        
-    def _pull_ents(self):
-        article_dicts = []
-        for file in self.ent_files:
-            ents = pickle.load(open(file, 'rb'))
-            article_dicts += ents
-        return article_dicts
+            additional_data_df = [] 
+
+        return word_count_df, additional_data_df
+
+    @staticmethod
+    def nmf_decompose(word_count_df, n_components, norm=True):
+      nmf = NMF(n_components=n_components, init='random', random_state=0)
+      if norm:
+        word_count_df = normalize(word_count_df, norm='l2', axis=0)
+      nmf.fit(word_count_df)
+      return nmf
+
+    def _compute_word_count_mat(self, article_dict, ent_grouper, year_range):
+        pmcid_all = [pmcid for pmcid in article_dict 
+                     if year_range[0] <= int(article_dict[pmcid]['year']) <= year_range[1]]
+        ents_list = [article_dict[pmcid]['ents_final'] for pmcid in pmcid_all]
+        unique_ents = sorted(list(set([ent for article_ents in ents_list 
+                                for ent in article_ents
+                                if ent is not None])))
+        if ent_grouper is None:
+          ent_grouper = {orig_ent: orig_ent for orig_ent in unique_ents}
+        else:
+          unique_ents = sorted(list(set([ent_grouper[ent] for ent in unique_ents 
+                                  if ent_grouper.get(ent) is not None])))
+        voc2id = dict(zip(unique_ents, range(len(unique_ents))))
+        rows, cols, vals = [], [], []
+        for r, d in enumerate(ents_list):
+          for e in d:
+              if voc2id.get(ent_grouper.get(e)) is not None:
+                  rows.append(r)
+                  cols.append(voc2id[ent_grouper[e]])
+                  vals.append(1)
+        word_count_mat = sp.csr_matrix((vals, (rows, cols)),
+                                       shape=(len(pmcid_all), len(unique_ents)))
+        # If the user specifies that we ignore entity counts within article: binarize
+        if self.ignore_article_counts:
+            word_count_mat[word_count_mat > 1] = 1
+
+        return word_count_mat, voc2id, pmcid_all
+
+    @staticmethod
+    def _create_ent_grouper(ent_grouper):
+      # drop ents with no classification
+      ent_grouper = {ent: group for ent, group in ent_grouper.items() 
+                     if group is not None
+                     if ~pd.isnull(group)}
+      return ent_grouper
+
+    @staticmethod
+    def _pull_ents(ent_file):
+      article_dict = pickle.load(open(ent_file, 'rb'))               
+      return article_dict

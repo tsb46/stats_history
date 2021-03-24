@@ -11,38 +11,20 @@ import tensortools as tt
 
 
 class EntityNetwork(EntityBase):
-    def __init__(self, ents_dir, journal_classifier, ent_count_thres,
-                 ignore_article_counts=True, precomp_ent_group=None):
-        super().__init__(ents_dir, journal_classifier, ent_count_thres,
-                         ignore_article_counts, precomp_ent_group)
-        # Hard-coded metadata columns in the word count dataframe - intentionally 
-        # dropped in some analyses
-        self.metadata_cols = ['citations', 'journal', 
-                              'title', 'abstract', 'domain']
+    def __init__(self, ents_fp, ent_grouper=None, year_range=None, 
+                 ignore_article_counts=True):
+        super().__init__(ents_fp, ent_grouper, year_range, ignore_article_counts)
     
     def compute_network(self, word_count_mat):
         network = self._compute_sim_mat(word_count_mat, norm=True)
         return network
-            
-    def compute_network_by_time(self, word_count_mat, article_date, time_res='annual', start_year = 2009, remove_most_recent=False):
-        date_resample = self._downsample_time(article_date, time_res)
-        date_resample = self._threshold_dates(date_resample, start_year, remove_most_recent)
-        network_by_time = []
-        network_dates = date_resample.sort_values().unique()
-        for date in network_dates:
-                date_indices = np.where(date_resample == date)[0]
-                network = self._compute_sim_mat(word_count_mat[date_indices, :], norm=True)
-                network_by_time.append(network)
-        network_by_time_array = np.dstack(network_by_time)
-        self.network_dates = network_dates
-        return network_by_time_array
     
-    def compute_network_by_domain(self, word_count_mat, article_domains):
+    def compute_network_by_domain(self, mat, domains):
         network_by_domain = []
-        network_domains = article_domains.unique()
+        network_domains = domains.unique()
         for domain in network_domains:
-            domain_indices = np.where(article_domains == domain)[0]
-            network = self._compute_sim_mat(word_count_mat[domain_indices, :], norm=True)
+            domain_indices = np.where(domains == domain)[0]
+            network = self._compute_sim_mat(mat[domain_indices, :], norm=True)
             network_by_domain.append(network)
         network_by_domain_array = np.dstack(network_by_domain)
         self.network_domains = network_domains
@@ -54,25 +36,15 @@ class EntityNetwork(EntityBase):
         for i in range(top_n):
             print('{} : {} \n'.format(self.ent_vocab[sort_indices[i]],
                                       weight_vec[sort_indices[i]]))
-        if display_opt == 'time':
-            plt.plot(self.factors[2][:,comp])
-            plt.xticks(range(factors[2].shape[1]), self.network_dates)
-            plt.xlabel('Time')
-            plt.ylabel('Component Weight')
-            plt.title(f'Tensor Component {comp}')
-        elif display_opt == 'domain':
-            markerline, stemlines, baseline = plt.stem(
-                self.network_domains, self.factors[2][:,comp], ':'
-            )
-            plt.setp(stemlines, 'linewidth', 3)
-            plt.xticks(rotation=90, size=15, weight='bold')
-            plt.xlabel('Domain')
+        markerline, stemlines, baseline = plt.stem(self.network_domains, self.factors[2][:,comp], ':')
+        plt.setp(stemlines, 'linewidth', 3)
+        plt.xticks(rotation=90, size=15, weight='bold')
+        plt.xlabel('Domain')
         plt.ylabel('Component Weight')
         plt.title(f'Tensor Component {comp}')
             
-    def tensor_decomp(self, network_tensor, n_comp, voc2id):
-        id2voc = {id: voc for voc, id in voc2id.items()}
-        self.ent_vocab = [id2voc[i] for i in range(len(voc2id))]
+    def tensor_decomp(self, network_tensor, n_comp):
+        self.ent_vocab = [self.id2voc[i] for i in range(len(self.id2voc))]
         tensors = tt.ncp_bcd(network_tensor, n_comp, verbose=False)
         self.factors = tensors.factors.rebalance()
     
@@ -116,30 +88,12 @@ class EntityNetwork(EntityBase):
         return ppmi_mat
         
     @staticmethod
-    def _downsample_time(series, time_res):
-        date_series = pd.to_datetime(series.values, 
-                                     format='%d-%m-%Y',
-                                     errors='coerce')
-        if time_res == 'annual':
-            resampled_series = date_series.year
-        else:
-            raise Exception('Provided time resolution not available')
-        return resampled_series
-    
-    @staticmethod
     def _norm_ppmi_mat(nppmi_mat):
         nppmi_vec = squareform(nppmi_mat.toarray(), 'tovector')
         norm_nppmi_vec = Normalizer('l2').fit_transform(nppmi_vec.reshape(1,-1))
         norm_nppmi_mat = squareform(norm_nppmi_vec.reshape(-1,), 'tomatrix')
         return norm_nppmi_mat
     
-    @staticmethod
-    def _threshold_dates(date_series, start_year, remove_most_recent=False):
-        time_mask = date_series >= start_year
-        thres_date_series = date_series[time_mask]
-        if remove_most_recent:
-            thres_date_series = thres_date_series[:-1].copy()
-        return thres_date_series
     
     
         

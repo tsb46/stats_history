@@ -10,10 +10,9 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 
 class EntityDomain(EntityBase):
-    def __init__(self, ents_dir, journal_classifier, ent_count_thres,
-                 ignore_article_counts=True, precomp_ent_group=None):
-        super().__init__(ents_dir, journal_classifier, ent_count_thres,
-                         ignore_article_counts, precomp_ent_group)
+    def __init__(self, ents_fp,
+                 ignore_article_counts=True, ent_grouper=None, year_range=None):
+        super().__init__(ents_fp, ignore_article_counts, ent_grouper, year_range)
 
     @staticmethod
     def comp_univariate_means(lda_dict, comp):
