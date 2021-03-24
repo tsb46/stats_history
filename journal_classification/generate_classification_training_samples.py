@@ -7,36 +7,36 @@ import pickle
 from glob import glob
 
 
-def generate_training_samples(corpus_files, pmid_to_journal, n_samples_per_journal):
+def generate_training_samples(articles, rand_sample):
     training_samples = []
-    for file_path in corpus_files:
-        samples = json.load(open(file_path, 'r'))
-        sampling_index = np.random.permutation(len(samples))
-        for i in range(0, int(n_samples_per_journal)):
-            sample = samples[sampling_index[i]]
-            # Ensure random selection has a corresponding 'journal' name in
-            # pmid to journal dict
-            if sample['pmid'] in pmid_to_journal:
-                sample_info = {
-                    'pmid': sample['pmid'],
-                    'title': sample['title'],
-                    'abstract': sample['abstract'],
-                    'journal': pmid_to_journal[sample['pmid']]['journal']
-                }
-                training_samples.append(sample_info)
+    for i in rand_sample:
+        article = articles[i]
+        try:
+            sample_info = {
+                'pmcid': article['pmcid'],
+                'title': article['title'],
+                'abstract': article['abstract'],
+                'journal': article['journal']
+            }
+            training_samples.append(sample_info)
+        except KeyError:
+            pass
     return training_samples
 
-
-def run_main(input_dir, output_dir, n_samples_per_journal=200):
+def run_main(input_dir, n_samples=1000):
     # Get paths to necessary inputs
-    pmid_to_journal = json.load(open(input_dir + '/article_metadict.json', 'rb'))
-    corpus_files = glob(input_dir + '/preprocessed/*.json')
-    # Generate random training samples for labeling
-    training_samples = generate_training_samples(corpus_files, pmid_to_journal,
-                                                 n_samples_per_journal)
+    ent_files = glob(input_dir + '/*.pickle')
+    n_samples_per_file = int(np.ceil(n_samples/len(ent_files)))
+    training_samples = []
+    for file in ent_files:
+        articles = article = pickle.load(open(file, 'rb'))
+        rand_sample = np.random.permutation(len(articles))[:n_samples_per_file]
+        # Generate random training samples for labeling
+        training_samples.extend(generate_training_samples(articles, rand_sample))
     # Convert to dataframe and output as .csv
     training_samples_df = pd.DataFrame(training_samples)
-    training_samples_df.to_csv(output_dir + '/journal_classification_training.csv', index=False)
+    training_samples_df.to_csv('journal_classification/journal_classification_training.csv', 
+                               index=False)
 
 
 if __name__ == '__main__':
@@ -44,21 +44,17 @@ if __name__ == '__main__':
     label for text classification training"""
     parser = argparse.ArgumentParser(description='Generate random article '
                                                  'selections for labeling')
-    parser.add_argument('-d', '--corpus_dir',
+    parser.add_argument('-i', '--corpus_dir',
                         help='<Required> Path to directory containing '
-                             'pubmed corpus files',
+                             'parsed pubmed corpus files',
                         required=True,
+                        default='results/ents/original',
                         type=str)
-    parser.add_argument('-o', '--output_dir',
-                        help='<Required> Path to directory '
-                             'to write samples to',
-                        required=True,
-                        type=str)
-    parser.add_argument('-n', '--n_samples_per_file',
+    parser.add_argument('-n', '--n_samples',
                         help='<Required> # of random selections'
                              'per corpus file',
-                        required=True,
+                        required=False,
+                        default=1000,
                         type=str)
     args_dict = vars(parser.parse_args())
-    run_main(args_dict['corpus_dir'], args_dict['output_dir'],
-             args_dict['n_samples_per_file'])
+    run_main(args_dict['corpus_dir'], args_dict['n_samples'])

@@ -35,8 +35,7 @@ def run_main(input_dir, output_dir, domain_classifier, verbose=True):
 
 if __name__ == '__main__':
     """Extract named entities from pubmed corpus"""
-    parser = argparse.ArgumentParser(description='Extract named entities from '
-                                                 'pubmed corpus files')
+    parser = argparse.ArgumentParser(description='Classify articles into domains')
     parser.add_argument('-i', '--input_dir',
                         help='<Required> Path to directory containing '
                              'pubmed xml files',

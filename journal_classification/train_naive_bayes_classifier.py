@@ -9,7 +9,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_selection import SelectKBest, chi2
 from sklearn.naive_bayes import ComplementNB
 from sklearn.pipeline import Pipeline, FeatureUnion
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, confusion_matrix
 from sklearn.model_selection import RepeatedKFold
 
 
@@ -46,19 +46,27 @@ def create_nb_classifier_pipeline(n_features):
     return classifier
 
 
-def run_classifier_cv(training_data, nb_classifier, n_folds, n_repeats):
+def run_classifier_cv(training_data, nb_classifier, n_folds, n_repeats, output_dir):
     rkf = RepeatedKFold(n_splits=n_folds, n_repeats=n_repeats)
+    labels = sorted(training_data['classification'].unique().tolist())
     y = training_data['classification']
     X = training_data[['title', 'abstract', 'journal']]
     all_scores = []
+    all_conf_mat = []
     for train_index, test_index in rkf.split(X):
         X_train, X_test = X.iloc[train_index, :], X.iloc[test_index, :]
         y_train, y_test = y.iloc[train_index], y.iloc[test_index]
         nb_classifier.fit(X_train, y_train)
         preds = nb_classifier.predict(X_test)
         score = accuracy_score(y_test, preds)
+        conf_mat = confusion_matrix(y_test, preds, labels=labels, normalize='true') 
         all_scores.append(score)
+        all_conf_mat.append(conf_mat)
+
     print('Total accuracy: %{}'.format(np.mean(all_scores)))
+    import pdb; pdb.set_trace()
+    pickle.dump(np.mean(all_conf_mat, axis=2),
+                open(output_dir + '/nb_classifier_conf_mat.pickle', 'wb'))
 
 
 def train_final_classifier(training_data, nb_classifier):
@@ -76,7 +84,7 @@ def run_main(training_samples, output_dir, n_folds, n_repeats, n_features):
     # Create sklearn pipeline for multinomial NB classifier
     nb_classifier = create_nb_classifier_pipeline(n_features)
     # Run classifier cross-validation across n-repeated K folds
-    run_classifier_cv(training_data, nb_classifier, n_folds, n_repeats)
+    run_classifier_cv(training_data, nb_classifier, n_folds, n_repeats, output_dir)
     # Fit final classifier model to all training data
     nb_classifier_fitted = train_final_classifier(training_data, nb_classifier)
     # Pickle final model to final directory
