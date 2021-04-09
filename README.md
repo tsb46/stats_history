@@ -1,8 +1,11 @@
 # Historical and Cross-Disciplinary Trends in the Biomedical, Life and Social Sciences 
-This repository contains the code and analyses for a forthcoming paper title 'Historical and cross-disciplinary trends in the biomedical, life and social sciences reveal a shift from classical to multivariate statistics'. 
+This repository contains the code and analyses for a forthcoming paper title 'The Changing Landscape of Analysis Methods in the Biological and Social Sciences'. 
 
 ## Article Abstract
 Methods for data analysis in the biomedical, life and social sciences are developing at a rapid pace. At the same time, there is increasing concern that education in quantitative methods is failing to adequately prepare students for contemporary research. These trends have led to calls for educational reform to undergraduate and graduate quantitative research method curricula. We argue that such reform should be based on data-driven insights into within- and cross-disciplinary use of analytic methods. Our survey of peer-reviewed literature analyzed ~1.3 million openly available research articles to monitor the cross-disciplinary mentions of analytic methods in the past decade. We applied data-driven text-mining analyses to the methods and results sections of a large subset of this corpus to identify trends in analytic method mentions shared across disciplines, as well as those unique to each discipline. We found that T-test, analysis of variance, linear regression, chi-squared test and other classical statistical methods have been, and remain the most mentioned analytic methods in biomedical, life science and social science research articles. However, mentions of these methods have declined as a percentage of the published literature over the past decade. On the other hand, multivariate statistical and machine-learning approaches, such as artificial neural networks, have seen a significant increase in the total share of scientific publications. We also find unique groupings of analytic methods associated with each biomedical, life and social science discipline, such as the use of structural equation modeling in psychology, survival models in oncology, and manifold learning in ecology. We discuss the implications of these findings for education in statistics and research methods, as well as within- and cross-disciplinary collaboration. 
+
+## Paper Figures and Demo
+We provide a Jupyter notebook-based demo of the code used to generate the figures and perform analyses in **demo.ipynb**. 
 
 # Getting Started
 
@@ -50,7 +53,8 @@ Methods for data analysis in the biomedical, life and social sciences are develo
 * <b>Demo.ipynb</b>: Jupyter notebook illustrating some of the results from the study
 * <b>ner_trainer</b>: directory containing a set of command-line utilities for training the Named Entity Recognition model to detect statistical method 'entities' in article 'Methods and Materials' sections. This directory also contains utility functions for creating automatic training samples directly from a list of example strings - via the 'phrase_seeds.txt'. The fully-trained NER model used in the paper is also contained in this directory as a pickle file: 'ner_spacy_model.pickle'.
 * <b>journal classification</b>: directory containing a set of command-line utilities for training the Multinomial Naive Bayes algorithm for classifying articles into the 15 scientific disciplines described in the paper. The fully-trained classifier model used in the paper is contained in this directory as a pickle file: 'nb_classifier.pickle'.
-* <b>analysis_main</b>: directory containing all the analysis code for the paper. The three analyses as described in the paper: 1) method usage trends, 2) discipline by research method probability analysis and 3) analysis of research method groupings. 
+* <b>entity preprocessing</b> directory containing a command-line utility for text preprocessing of entity strings from the NER algorithm.
+* <b>analysis_main</b>: directory containing all the analysis code for the paper. The three analyses as described in the paper: 1) analytic method trends, 2) discipline by analytic method probability analysis and 3) analysis of analytic method groupings. 
 
 ## 2. Installing
 * Note, some of these steps are only necessary to replicate the results in the study. If you're interested in specific components of the preprocessing and analysis pipeline, some of these steps are not necessary.
@@ -178,6 +182,17 @@ In the terminal:
 python entity_preprocessing/preprocess_entities.py -i results/ents/original -o results/ents/preprocesing -m results/article_domain_prediction.pickle 
 ```
 
+# Analysis 
+After the above steps are complete, you are ready for analysis! The analyses conducted in the paper are contained in the 'analysis_main' directory. You will find several scripts in this directory that each instatiate a Python class for a separate analysis in the paper. For example, 'ent_trends.py' contains the class object used to perform trend analysis of analytic method entities. All class objects inherit a basic set of preprocessing and utility functions from the base class 'EntityBase' defined in the 'ents_base.py' script. Below is the list of each analysis script and the methods it performs:
+
+* *ents_base.py* (EntityBase) - base class containing preprocessing and utility functions - e.g. construction of analytic-by-method count matrix, classification of analytic method strings and conversion of count matrix to Pandas dataframe.
+* *ents_trends.py* (EntityTrends) - class containing methods for computing analytic method counts over time.
+* *ents_domain.py* (EntityDomains) - class containing methods to assess the difference in analytic method usage across disciplines.
+* *ents_network.py* (EntityNetwork) - class containing the tensor decomposition method for generating 'analytic method groupings'
+* *ents_compare.py* (EntityCompare) - class containing methods to compute 'word embeddings' of analytic methods - (not tested, nor used in the main paper).
+
+## Analytic Method Disambiguation
+One further step in our pre-preprocessing pipeline was a manual disambiguation step where entity strings referring to the same analytic method were classified as the same entity. For example, the strings 'two-sample t-test', 'independent t-test', 'independent samples t-test' were classified as one entity. The results of this manual disambiguation process is contained in 'ents_classification.csv'. Each row in this .csv contains an entity string, it's classification (column 'classification'), and a higher-order classification (column 'classification2') used in the analytic method trend analysis (see paper). The instatiation of each analysis class accepts a 'ent_grouping' parameter that will take a dictionary of each entity (key) and its category (value). If supplied, the class will perform grouping of all entity strings into these categories for further analysis. Users may modify the 'ents_classification.csv' into their own categorization as they see fit.
 
 
 
